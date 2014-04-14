@@ -104,6 +104,12 @@
     <Compile Include="frmMember.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmShopping.Designer.vb">
+      <DependentUpon>frmShopping.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmShopping.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="modGlobal.vb" />
     <Compile Include="modObjects.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -133,6 +139,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMember.resx">
       <DependentUpon>frmMember.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmShopping.resx">
+      <DependentUpon>frmShopping.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
