@@ -1,5 +1,6 @@
 ﻿Public Class frmMain
     Private MemberInfo As frmMember
+    Private ShoppingCart As frmShopping
 
     Private Sub tsbMember_Click(sender As Object, e As EventArgs) Handles tsbMember.Click
         Me.Hide()
@@ -27,6 +28,7 @@
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles Me.Load
         'instantiate an object for each form in the application
         MemberInfo = New frmMember
+        ShoppingCart = New frmShopping
         'open the database
         Try
             myDB.OpenDB()
@@ -76,5 +78,12 @@
             Case Else
                 'do nothing
         End Select
+    End Sub
+
+    Private Sub tsbShop_Click(sender As Object, e As EventArgs) Handles tsbShop.Click
+        Me.Hide()
+        ShoppingCart.ShowDialog()
+        Me.Show()
+        PerformNextAction()
     End Sub
 End Class

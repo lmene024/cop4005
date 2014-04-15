@@ -41,13 +41,13 @@ Partial Class frmShopping
         Me.btnConfirmOrder = New System.Windows.Forms.Button()
         Me.btnCancelOrder = New System.Windows.Forms.Button()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.grpItems = New System.Windows.Forms.GroupBox()
-        Me.lstItems = New System.Windows.Forms.ListBox()
-        Me.txtSearch = New System.Windows.Forms.TextBox()
-        Me.btnSearch = New System.Windows.Forms.Button()
-        Me.btnAdd = New System.Windows.Forms.Button()
-        Me.cboMembers = New System.Windows.Forms.ComboBox()
         Me.btnNew = New System.Windows.Forms.Button()
+        Me.cboMembers = New System.Windows.Forms.ComboBox()
+        Me.grpItems = New System.Windows.Forms.GroupBox()
+        Me.btnAdd = New System.Windows.Forms.Button()
+        Me.btnSearch = New System.Windows.Forms.Button()
+        Me.txtSearch = New System.Windows.Forms.TextBox()
+        Me.lstItems = New System.Windows.Forms.ListBox()
         Me.ToolStrip1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -266,6 +266,23 @@ Partial Class frmShopping
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Member"
         '
+        'btnNew
+        '
+        Me.btnNew.Location = New System.Drawing.Point(428, 25)
+        Me.btnNew.Name = "btnNew"
+        Me.btnNew.Size = New System.Drawing.Size(75, 23)
+        Me.btnNew.TabIndex = 1
+        Me.btnNew.Text = "New Order"
+        Me.btnNew.UseVisualStyleBackColor = True
+        '
+        'cboMembers
+        '
+        Me.cboMembers.FormattingEnabled = True
+        Me.cboMembers.Location = New System.Drawing.Point(10, 27)
+        Me.cboMembers.Name = "cboMembers"
+        Me.cboMembers.Size = New System.Drawing.Size(369, 21)
+        Me.cboMembers.TabIndex = 0
+        '
         'grpItems
         '
         Me.grpItems.Controls.Add(Me.btnAdd)
@@ -279,20 +296,14 @@ Partial Class frmShopping
         Me.grpItems.TabStop = False
         Me.grpItems.Text = "Items"
         '
-        'lstItems
+        'btnAdd
         '
-        Me.lstItems.FormattingEnabled = True
-        Me.lstItems.Location = New System.Drawing.Point(10, 53)
-        Me.lstItems.Name = "lstItems"
-        Me.lstItems.Size = New System.Drawing.Size(493, 212)
-        Me.lstItems.TabIndex = 0
-        '
-        'txtSearch
-        '
-        Me.txtSearch.Location = New System.Drawing.Point(10, 19)
-        Me.txtSearch.Name = "txtSearch"
-        Me.txtSearch.Size = New System.Drawing.Size(411, 20)
-        Me.txtSearch.TabIndex = 1
+        Me.btnAdd.Location = New System.Drawing.Point(428, 276)
+        Me.btnAdd.Name = "btnAdd"
+        Me.btnAdd.Size = New System.Drawing.Size(75, 23)
+        Me.btnAdd.TabIndex = 3
+        Me.btnAdd.Text = "Add to Order"
+        Me.btnAdd.UseVisualStyleBackColor = True
         '
         'btnSearch
         '
@@ -303,31 +314,20 @@ Partial Class frmShopping
         Me.btnSearch.Text = "Search"
         Me.btnSearch.UseVisualStyleBackColor = True
         '
-        'btnAdd
+        'txtSearch
         '
-        Me.btnAdd.Location = New System.Drawing.Point(428, 276)
-        Me.btnAdd.Name = "btnAdd"
-        Me.btnAdd.Size = New System.Drawing.Size(75, 23)
-        Me.btnAdd.TabIndex = 3
-        Me.btnAdd.Text = "Add to Order"
-        Me.btnAdd.UseVisualStyleBackColor = True
+        Me.txtSearch.Location = New System.Drawing.Point(10, 19)
+        Me.txtSearch.Name = "txtSearch"
+        Me.txtSearch.Size = New System.Drawing.Size(411, 20)
+        Me.txtSearch.TabIndex = 1
         '
-        'cboMembers
+        'lstItems
         '
-        Me.cboMembers.FormattingEnabled = True
-        Me.cboMembers.Location = New System.Drawing.Point(10, 27)
-        Me.cboMembers.Name = "cboMembers"
-        Me.cboMembers.Size = New System.Drawing.Size(369, 21)
-        Me.cboMembers.TabIndex = 0
-        '
-        'btnNew
-        '
-        Me.btnNew.Location = New System.Drawing.Point(428, 25)
-        Me.btnNew.Name = "btnNew"
-        Me.btnNew.Size = New System.Drawing.Size(75, 23)
-        Me.btnNew.TabIndex = 1
-        Me.btnNew.Text = "New Order"
-        Me.btnNew.UseVisualStyleBackColor = True
+        Me.lstItems.FormattingEnabled = True
+        Me.lstItems.Location = New System.Drawing.Point(10, 53)
+        Me.lstItems.Name = "lstItems"
+        Me.lstItems.Size = New System.Drawing.Size(493, 212)
+        Me.lstItems.TabIndex = 0
         '
         'frmShopping
         '
@@ -335,6 +335,7 @@ Partial Class frmShopping
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(179, Byte), Integer), CType(CType(236, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(820, 492)
+        Me.ControlBox = False
         Me.Controls.Add(Me.grpItems)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.btnCancelOrder)
