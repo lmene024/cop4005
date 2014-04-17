@@ -31,6 +31,8 @@ Partial Class frmMember
         Me.tsbReturn = New System.Windows.Forms.ToolStripButton()
         Me.tsbHelp = New System.Windows.Forms.ToolStripButton()
         Me.grbSearch = New System.Windows.Forms.GroupBox()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.cboName = New System.Windows.Forms.ComboBox()
         Me.grpPhoto = New System.Windows.Forms.GroupBox()
         Me.btnBrowse = New System.Windows.Forms.Button()
         Me.picPhoto = New System.Windows.Forms.PictureBox()
@@ -59,8 +61,6 @@ Partial Class frmMember
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.cboName = New System.Windows.Forms.ComboBox()
-        Me.Label12 = New System.Windows.Forms.Label()
         Me.ToolStrip1.SuspendLayout()
         Me.grbSearch.SuspendLayout()
         Me.grpPhoto.SuspendLayout()
@@ -169,6 +169,24 @@ Partial Class frmMember
         Me.grbSearch.TabIndex = 2
         Me.grbSearch.TabStop = False
         Me.grbSearch.Text = "Search"
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Location = New System.Drawing.Point(16, 29)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(67, 17)
+        Me.Label12.TabIndex = 1
+        Me.Label12.Text = "By Name:"
+        '
+        'cboName
+        '
+        Me.cboName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboName.FormattingEnabled = True
+        Me.cboName.Location = New System.Drawing.Point(89, 27)
+        Me.cboName.Name = "cboName"
+        Me.cboName.Size = New System.Drawing.Size(161, 25)
+        Me.cboName.TabIndex = 0
         '
         'grpPhoto
         '
@@ -433,23 +451,6 @@ Partial Class frmMember
         Me.Label1.Size = New System.Drawing.Size(77, 17)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Member ID"
-        '
-        'cboName
-        '
-        Me.cboName.FormattingEnabled = True
-        Me.cboName.Location = New System.Drawing.Point(89, 27)
-        Me.cboName.Name = "cboName"
-        Me.cboName.Size = New System.Drawing.Size(161, 25)
-        Me.cboName.TabIndex = 0
-        '
-        'Label12
-        '
-        Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(16, 29)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(67, 17)
-        Me.Label12.TabIndex = 1
-        Me.Label12.Text = "By Name:"
         '
         'frmMember
         '
