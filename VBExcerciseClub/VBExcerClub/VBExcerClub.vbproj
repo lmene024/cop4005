@@ -87,6 +87,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CDB.vb" />
+    <Compile Include="CEmployee.vb" />
+    <Compile Include="CEmployees.vb" />
     <Compile Include="CMember.vb" />
     <Compile Include="CMembers.vb" />
     <Compile Include="CProgram.vb" />
