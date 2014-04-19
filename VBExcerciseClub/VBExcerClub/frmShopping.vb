@@ -2,7 +2,9 @@
 
 Public Class frmShopping
     Private blnOrderStarted As Boolean = False
+    Private DataReader As SqlDataReader
     Private Members As CMembers
+    Private Employees As CEmployees
     'Private Orders As COrders
     'Private Products As CProducts
 
@@ -12,6 +14,7 @@ Public Class frmShopping
 
         ' Add any initialization after the InitializeComponent() call.
         Members = New CMembers
+        Employees = New CEmployees
     End Sub
 
     Private Sub frmShopping_Shown(sender As Object, e As EventArgs) Handles Me.Shown
@@ -22,16 +25,21 @@ Public Class frmShopping
     End Sub
 
     Private Sub LoadMembers()
-        Dim dataReader As SqlDataReader = Members.GetMemberList()
+        DataReader = Members.GetMemberList()
         cboMembers.Items.Clear()
         While dataReader.Read
-            cboMembers.Items.Add(dataReader.Item("lname") & ", " & dataReader.Item("fname"))
+            cboMembers.Items.Add(DataReader.Item("lname") & ", " & DataReader.Item("fname"))
         End While
-        dataReader.Close()
+        DataReader.Close()
     End Sub
 
     Private Sub LoadEmployees()
+        DataReader = Employees.GetEmployeeList()
         cboEmployee.Items.Clear()
+        While DataReader.Read
+            cboEmployee.Items.Add(DataReader.Item("lname") & ", " & DataReader.Item("fname"))
+        End While
+        DataReader.Close()
     End Sub
 
     Private Sub LoadProducts(ByRef strSearch As String)

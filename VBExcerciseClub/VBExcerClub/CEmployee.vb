@@ -149,7 +149,7 @@
     Public Function Save() As Integer
         'return -1 if the ID already exists (and we can't create a new record then
         If IsNewEmployee Then
-            Dim strRes As String = myDB.GetSingleValueFromSP("sp_CheckEmployeeIDExists", New SqlClient.SqlParameter("EMPID", _mstrEmpID))
+            Dim strRes As String = myDB.GetSingleValueFromSP("sp_CheckEmployeeIDExists", New SqlClient.SqlParameter("EmployeeID", _mstrEmpID))
             If Not strRes = 0 Then
                 Return -1 'Not UNIQUE!
             End If
