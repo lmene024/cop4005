@@ -9,6 +9,10 @@
         PerformNextAction()
     End Sub
 
+    Private Sub tsbExit_Click(sender As Object, e As EventArgs) Handles tsbExit.Click
+        EndProgram()
+    End Sub
+
     Private Sub tsbProxy_MouseEnter(sender As Object, e As EventArgs) Handles tsbContact.MouseEnter, tsbExit.MouseEnter, tsbHelp.MouseEnter, tsbHome.MouseEnter, tsbMember.MouseEnter, tsbProgram.MouseEnter, tsbShop.MouseEnter
         'we need to do this because we are putting out images in the BackGroundImage property
         'instead of the Image property
@@ -85,9 +89,5 @@
         ShoppingCart.ShowDialog()
         Me.Show()
         PerformNextAction()
-    End Sub
-
-    Private Sub tsbExit_Click(sender As Object, e As EventArgs) Handles tsbExit.Click
-        EndProgram()
     End Sub
 End Class
