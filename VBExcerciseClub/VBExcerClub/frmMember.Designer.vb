@@ -31,8 +31,8 @@ Partial Class frmMember
         Me.tsbReturn = New System.Windows.Forms.ToolStripButton()
         Me.tsbHelp = New System.Windows.Forms.ToolStripButton()
         Me.grbSearch = New System.Windows.Forms.GroupBox()
-        Me.cboName = New System.Windows.Forms.ComboBox()
         Me.Label12 = New System.Windows.Forms.Label()
+        Me.cboName = New System.Windows.Forms.ComboBox()
         Me.grpPhoto = New System.Windows.Forms.GroupBox()
         Me.btnBrowse = New System.Windows.Forms.Button()
         Me.picPhoto = New System.Windows.Forms.PictureBox()
@@ -160,8 +160,8 @@ Partial Class frmMember
         '
         'grbSearch
         '
-        Me.grbSearch.Controls.Add(Me.cboName)
         Me.grbSearch.Controls.Add(Me.Label12)
+        Me.grbSearch.Controls.Add(Me.cboName)
         Me.grbSearch.ForeColor = System.Drawing.Color.DarkBlue
         Me.grbSearch.Location = New System.Drawing.Point(12, 89)
         Me.grbSearch.Name = "grbSearch"
@@ -170,23 +170,23 @@ Partial Class frmMember
         Me.grbSearch.TabStop = False
         Me.grbSearch.Text = "Search"
         '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Location = New System.Drawing.Point(16, 29)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(67, 17)
+        Me.Label12.TabIndex = 1
+        Me.Label12.Text = "By Name:"
+        '
         'cboName
         '
         Me.cboName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboName.FormattingEnabled = True
-        Me.cboName.Location = New System.Drawing.Point(28, 66)
+        Me.cboName.Location = New System.Drawing.Point(89, 27)
         Me.cboName.Name = "cboName"
-        Me.cboName.Size = New System.Drawing.Size(223, 25)
-        Me.cboName.TabIndex = 1
-        '
-        'Label12
-        '
-        Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(23, 37)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(107, 17)
-        Me.Label12.TabIndex = 0
-        Me.Label12.Text = "Search by Name"
+        Me.cboName.Size = New System.Drawing.Size(161, 25)
+        Me.cboName.TabIndex = 0
         '
         'grpPhoto
         '
@@ -517,6 +517,6 @@ Partial Class frmMember
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents cboName As System.Windows.Forms.ComboBox
     Friend WithEvents Label12 As System.Windows.Forms.Label
+    Friend WithEvents cboName As System.Windows.Forms.ComboBox
 End Class
