@@ -22,6 +22,7 @@ Partial Class frmShopping
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.tsbHome = New System.Windows.Forms.ToolStripButton()
         Me.tsbMember = New System.Windows.Forms.ToolStripButton()
@@ -31,30 +32,35 @@ Partial Class frmShopping
         Me.tsbReturn = New System.Windows.Forms.ToolStripButton()
         Me.tsbHelp = New System.Windows.Forms.ToolStripButton()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
+        Me.lblTotal = New System.Windows.Forms.Label()
+        Me.lblTax = New System.Windows.Forms.Label()
+        Me.lblSub = New System.Windows.Forms.Label()
+        Me.btnConfirmOrder = New System.Windows.Forms.Button()
         Me.lblOrderNum = New System.Windows.Forms.Label()
         Me.lsvLines = New System.Windows.Forms.ListView()
         Me.lblMemName = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.btnConfirmOrder = New System.Windows.Forms.Button()
         Me.btnCancelOrder = New System.Windows.Forms.Button()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.cboEmployee = New System.Windows.Forms.ComboBox()
+        Me.Label5 = New System.Windows.Forms.Label()
         Me.btnNew = New System.Windows.Forms.Button()
         Me.cboMembers = New System.Windows.Forms.ComboBox()
         Me.grpItems = New System.Windows.Forms.GroupBox()
+        Me.nudQty = New System.Windows.Forms.NumericUpDown()
+        Me.Label7 = New System.Windows.Forms.Label()
         Me.btnAdd = New System.Windows.Forms.Button()
         Me.btnSearch = New System.Windows.Forms.Button()
         Me.txtSearch = New System.Windows.Forms.TextBox()
         Me.lstItems = New System.Windows.Forms.ListBox()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.cboEmployee = New System.Windows.Forms.ComboBox()
-        Me.Label6 = New System.Windows.Forms.Label()
+        Me.errP = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.ToolStrip1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.grpItems.SuspendLayout()
+        CType(Me.nudQty, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.errP, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ToolStrip1
@@ -64,7 +70,7 @@ Partial Class frmShopping
         Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsbHome, Me.tsbMember, Me.tsbProgram, Me.tsbShop, Me.tsbContact, Me.tsbReturn, Me.tsbHelp})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(820, 75)
+        Me.ToolStrip1.Size = New System.Drawing.Size(910, 75)
         Me.ToolStrip1.TabIndex = 1
         Me.ToolStrip1.Text = "ToolStrip1"
         '
@@ -149,59 +155,73 @@ Partial Class frmShopping
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.Label4)
-        Me.GroupBox1.Controls.Add(Me.Label3)
-        Me.GroupBox1.Controls.Add(Me.Label2)
+        Me.GroupBox1.Controls.Add(Me.lblTotal)
+        Me.GroupBox1.Controls.Add(Me.lblTax)
+        Me.GroupBox1.Controls.Add(Me.btnCancelOrder)
+        Me.GroupBox1.Controls.Add(Me.lblSub)
+        Me.GroupBox1.Controls.Add(Me.btnConfirmOrder)
         Me.GroupBox1.Controls.Add(Me.lblOrderNum)
         Me.GroupBox1.Controls.Add(Me.lsvLines)
         Me.GroupBox1.Controls.Add(Me.lblMemName)
         Me.GroupBox1.Controls.Add(Me.Label1)
-        Me.GroupBox1.Location = New System.Drawing.Point(544, 79)
+        Me.GroupBox1.Location = New System.Drawing.Point(546, 103)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(264, 367)
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.GroupBox1.Size = New System.Drawing.Size(352, 581)
         Me.GroupBox1.TabIndex = 2
         Me.GroupBox1.TabStop = False
         '
-        'Label4
+        'lblTotal
         '
-        Me.Label4.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(129, 326)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(129, 26)
-        Me.Label4.TabIndex = 6
-        Me.Label4.Text = "Total"
-        Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.lblTotal.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblTotal.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTotal.Location = New System.Drawing.Point(171, 461)
+        Me.lblTotal.Name = "lblTotal"
+        Me.lblTotal.Size = New System.Drawing.Size(171, 34)
+        Me.lblTotal.TabIndex = 6
+        Me.lblTotal.Text = "Total"
+        Me.lblTotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'Label3
+        'lblTax
         '
-        Me.Label3.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(129, 300)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(129, 26)
-        Me.Label3.TabIndex = 5
-        Me.Label3.Text = "Tax"
-        Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.lblTax.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblTax.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTax.Location = New System.Drawing.Point(171, 427)
+        Me.lblTax.Name = "lblTax"
+        Me.lblTax.Size = New System.Drawing.Size(171, 34)
+        Me.lblTax.TabIndex = 5
+        Me.lblTax.Text = "Tax"
+        Me.lblTax.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'Label2
+        'lblSub
         '
-        Me.Label2.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(129, 274)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(129, 26)
-        Me.Label2.TabIndex = 4
-        Me.Label2.Text = "SubTotal"
-        Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.lblSub.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblSub.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblSub.Location = New System.Drawing.Point(171, 393)
+        Me.lblSub.Name = "lblSub"
+        Me.lblSub.Size = New System.Drawing.Size(171, 34)
+        Me.lblSub.TabIndex = 4
+        Me.lblSub.Text = "SubTotal"
+        Me.lblSub.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'btnConfirmOrder
+        '
+        Me.btnConfirmOrder.Location = New System.Drawing.Point(234, 530)
+        Me.btnConfirmOrder.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.btnConfirmOrder.Name = "btnConfirmOrder"
+        Me.btnConfirmOrder.Size = New System.Drawing.Size(107, 30)
+        Me.btnConfirmOrder.TabIndex = 3
+        Me.btnConfirmOrder.Text = "Confirm"
+        Me.btnConfirmOrder.UseVisualStyleBackColor = True
         '
         'lblOrderNum
         '
         Me.lblOrderNum.BackColor = System.Drawing.Color.White
         Me.lblOrderNum.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.lblOrderNum.Location = New System.Drawing.Point(7, 55)
+        Me.lblOrderNum.Location = New System.Drawing.Point(9, 72)
         Me.lblOrderNum.Name = "lblOrderNum"
-        Me.lblOrderNum.Size = New System.Drawing.Size(70, 18)
+        Me.lblOrderNum.Size = New System.Drawing.Size(92, 23)
         Me.lblOrderNum.TabIndex = 3
         '
         'lsvLines
@@ -210,9 +230,10 @@ Partial Class frmShopping
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lsvLines.ForeColor = System.Drawing.Color.DarkBlue
-        Me.lsvLines.Location = New System.Drawing.Point(7, 76)
+        Me.lsvLines.Location = New System.Drawing.Point(9, 99)
+        Me.lsvLines.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.lsvLines.Name = "lsvLines"
-        Me.lsvLines.Size = New System.Drawing.Size(251, 190)
+        Me.lsvLines.Size = New System.Drawing.Size(333, 281)
         Me.lsvLines.TabIndex = 2
         Me.lsvLines.UseCompatibleStateImageBehavior = False
         '
@@ -222,9 +243,9 @@ Partial Class frmShopping
         Me.lblMemName.AutoEllipsis = True
         Me.lblMemName.BackColor = System.Drawing.Color.White
         Me.lblMemName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.lblMemName.Location = New System.Drawing.Point(83, 55)
+        Me.lblMemName.Location = New System.Drawing.Point(111, 72)
         Me.lblMemName.Name = "lblMemName"
-        Me.lblMemName.Size = New System.Drawing.Size(175, 18)
+        Me.lblMemName.Size = New System.Drawing.Size(230, 23)
         Me.lblMemName.TabIndex = 1
         '
         'Label1
@@ -232,29 +253,21 @@ Partial Class frmShopping
         Me.Label1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label1.BackColor = System.Drawing.Color.DarkViolet
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Font = New System.Drawing.Font("Segoe UI", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(7, 13)
+        Me.Label1.Location = New System.Drawing.Point(9, 17)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(251, 39)
+        Me.Label1.Size = New System.Drawing.Size(332, 51)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Order"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'btnConfirmOrder
-        '
-        Me.btnConfirmOrder.Location = New System.Drawing.Point(551, 484)
-        Me.btnConfirmOrder.Name = "btnConfirmOrder"
-        Me.btnConfirmOrder.Size = New System.Drawing.Size(81, 34)
-        Me.btnConfirmOrder.TabIndex = 3
-        Me.btnConfirmOrder.Text = "Confirm"
-        Me.btnConfirmOrder.UseVisualStyleBackColor = True
-        '
         'btnCancelOrder
         '
-        Me.btnCancelOrder.Location = New System.Drawing.Point(727, 484)
+        Me.btnCancelOrder.Location = New System.Drawing.Point(9, 530)
+        Me.btnCancelOrder.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.btnCancelOrder.Name = "btnCancelOrder"
-        Me.btnCancelOrder.Size = New System.Drawing.Size(81, 34)
+        Me.btnCancelOrder.Size = New System.Drawing.Size(107, 30)
         Me.btnCancelOrder.TabIndex = 4
         Me.btnCancelOrder.Text = "Cancel"
         Me.btnCancelOrder.UseVisualStyleBackColor = True
@@ -266,119 +279,168 @@ Partial Class frmShopping
         Me.GroupBox2.Controls.Add(Me.Label5)
         Me.GroupBox2.Controls.Add(Me.btnNew)
         Me.GroupBox2.Controls.Add(Me.cboMembers)
-        Me.GroupBox2.Location = New System.Drawing.Point(12, 79)
+        Me.GroupBox2.Location = New System.Drawing.Point(16, 103)
+        Me.GroupBox2.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(516, 118)
+        Me.GroupBox2.Padding = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.GroupBox2.Size = New System.Drawing.Size(474, 154)
         Me.GroupBox2.TabIndex = 5
         Me.GroupBox2.TabStop = False
         '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(9, 17)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(68, 17)
+        Me.Label6.TabIndex = 4
+        Me.Label6.Text = "Employee"
+        '
+        'cboEmployee
+        '
+        Me.cboEmployee.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cboEmployee.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboEmployee.FormattingEnabled = True
+        Me.cboEmployee.Location = New System.Drawing.Point(8, 41)
+        Me.cboEmployee.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.cboEmployee.Name = "cboEmployee"
+        Me.cboEmployee.Size = New System.Drawing.Size(327, 25)
+        Me.cboEmployee.TabIndex = 3
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(8, 80)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(59, 17)
+        Me.Label5.TabIndex = 2
+        Me.Label5.Text = "Member"
+        '
         'btnNew
         '
-        Me.btnNew.Location = New System.Drawing.Point(420, 55)
+        Me.btnNew.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnNew.Location = New System.Drawing.Point(349, 106)
+        Me.btnNew.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.btnNew.Name = "btnNew"
-        Me.btnNew.Size = New System.Drawing.Size(75, 23)
+        Me.btnNew.Size = New System.Drawing.Size(107, 30)
         Me.btnNew.TabIndex = 1
         Me.btnNew.Text = "New Order"
         Me.btnNew.UseVisualStyleBackColor = True
         '
         'cboMembers
         '
+        Me.cboMembers.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cboMembers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboMembers.FormattingEnabled = True
-        Me.cboMembers.Location = New System.Drawing.Point(6, 81)
+        Me.cboMembers.Location = New System.Drawing.Point(8, 106)
+        Me.cboMembers.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.cboMembers.Name = "cboMembers"
-        Me.cboMembers.Size = New System.Drawing.Size(369, 21)
+        Me.cboMembers.Size = New System.Drawing.Size(327, 25)
         Me.cboMembers.TabIndex = 0
         '
         'grpItems
         '
+        Me.grpItems.Controls.Add(Me.nudQty)
+        Me.grpItems.Controls.Add(Me.Label7)
         Me.grpItems.Controls.Add(Me.btnAdd)
         Me.grpItems.Controls.Add(Me.btnSearch)
         Me.grpItems.Controls.Add(Me.txtSearch)
         Me.grpItems.Controls.Add(Me.lstItems)
         Me.grpItems.ForeColor = System.Drawing.Color.DarkBlue
-        Me.grpItems.Location = New System.Drawing.Point(12, 209)
+        Me.grpItems.Location = New System.Drawing.Point(16, 273)
+        Me.grpItems.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.grpItems.Name = "grpItems"
-        Me.grpItems.Size = New System.Drawing.Size(515, 314)
+        Me.grpItems.Padding = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.grpItems.Size = New System.Drawing.Size(474, 411)
         Me.grpItems.TabIndex = 6
         Me.grpItems.TabStop = False
         Me.grpItems.Text = "Items"
         '
+        'nudQty
+        '
+        Me.nudQty.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.nudQty.Location = New System.Drawing.Point(214, 363)
+        Me.nudQty.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.nudQty.Name = "nudQty"
+        Me.nudQty.Size = New System.Drawing.Size(73, 25)
+        Me.nudQty.TabIndex = 6
+        Me.nudQty.Value = New Decimal(New Integer() {1, 0, 0, 0})
+        '
+        'Label7
+        '
+        Me.Label7.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(174, 365)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(34, 17)
+        Me.Label7.TabIndex = 5
+        Me.Label7.Text = "Qty:"
+        '
         'btnAdd
         '
-        Me.btnAdd.Location = New System.Drawing.Point(414, 275)
+        Me.btnAdd.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnAdd.Location = New System.Drawing.Point(349, 360)
+        Me.btnAdd.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.btnAdd.Name = "btnAdd"
-        Me.btnAdd.Size = New System.Drawing.Size(81, 34)
+        Me.btnAdd.Size = New System.Drawing.Size(107, 30)
         Me.btnAdd.TabIndex = 3
         Me.btnAdd.Text = "Add to Order"
         Me.btnAdd.UseVisualStyleBackColor = True
         '
         'btnSearch
         '
-        Me.btnSearch.Location = New System.Drawing.Point(428, 19)
+        Me.btnSearch.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnSearch.Location = New System.Drawing.Point(349, 21)
+        Me.btnSearch.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.btnSearch.Name = "btnSearch"
-        Me.btnSearch.Size = New System.Drawing.Size(75, 23)
+        Me.btnSearch.Size = New System.Drawing.Size(107, 30)
         Me.btnSearch.TabIndex = 2
         Me.btnSearch.Text = "Search"
         Me.btnSearch.UseVisualStyleBackColor = True
         '
         'txtSearch
         '
-        Me.txtSearch.Location = New System.Drawing.Point(10, 19)
+        Me.txtSearch.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txtSearch.Location = New System.Drawing.Point(14, 25)
+        Me.txtSearch.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.txtSearch.Name = "txtSearch"
-        Me.txtSearch.Size = New System.Drawing.Size(411, 20)
+        Me.txtSearch.Size = New System.Drawing.Size(321, 25)
         Me.txtSearch.TabIndex = 1
         '
         'lstItems
         '
+        Me.lstItems.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lstItems.ForeColor = System.Drawing.Color.DarkBlue
         Me.lstItems.FormattingEnabled = True
-        Me.lstItems.Location = New System.Drawing.Point(10, 53)
+        Me.lstItems.ItemHeight = 17
+        Me.lstItems.Location = New System.Drawing.Point(14, 69)
+        Me.lstItems.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.lstItems.Name = "lstItems"
-        Me.lstItems.Size = New System.Drawing.Size(493, 212)
+        Me.lstItems.Size = New System.Drawing.Size(442, 276)
         Me.lstItems.TabIndex = 0
         '
-        'Label5
+        'errP
         '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(6, 61)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(45, 13)
-        Me.Label5.TabIndex = 2
-        Me.Label5.Text = "Member"
-        '
-        'cboEmployee
-        '
-        Me.cboEmployee.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboEmployee.FormattingEnabled = True
-        Me.cboEmployee.Location = New System.Drawing.Point(6, 31)
-        Me.cboEmployee.Name = "cboEmployee"
-        Me.cboEmployee.Size = New System.Drawing.Size(369, 21)
-        Me.cboEmployee.TabIndex = 3
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(7, 13)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(53, 13)
-        Me.Label6.TabIndex = 4
-        Me.Label6.Text = "Employee"
+        Me.errP.ContainerControl = Me
         '
         'frmShopping
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 17.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(179, Byte), Integer), CType(CType(236, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(820, 549)
+        Me.ClientSize = New System.Drawing.Size(910, 718)
         Me.ControlBox = False
         Me.Controls.Add(Me.grpItems)
         Me.Controls.Add(Me.GroupBox2)
-        Me.Controls.Add(Me.btnCancelOrder)
-        Me.Controls.Add(Me.btnConfirmOrder)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.ToolStrip1)
+        Me.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ForeColor = System.Drawing.Color.DarkBlue
+        Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.Name = "frmShopping"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Shopping"
@@ -389,6 +451,8 @@ Partial Class frmShopping
         Me.GroupBox2.PerformLayout()
         Me.grpItems.ResumeLayout(False)
         Me.grpItems.PerformLayout()
+        CType(Me.nudQty, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.errP, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -401,9 +465,9 @@ Partial Class frmShopping
     Friend WithEvents tsbReturn As System.Windows.Forms.ToolStripButton
     Friend WithEvents tsbHelp As System.Windows.Forms.ToolStripButton
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
-    Friend WithEvents Label4 As System.Windows.Forms.Label
-    Friend WithEvents Label3 As System.Windows.Forms.Label
-    Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents lblTotal As System.Windows.Forms.Label
+    Friend WithEvents lblTax As System.Windows.Forms.Label
+    Friend WithEvents lblSub As System.Windows.Forms.Label
     Friend WithEvents lblOrderNum As System.Windows.Forms.Label
     Friend WithEvents lsvLines As System.Windows.Forms.ListView
     Friend WithEvents lblMemName As System.Windows.Forms.Label
@@ -421,4 +485,7 @@ Partial Class frmShopping
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents cboEmployee As System.Windows.Forms.ComboBox
     Friend WithEvents Label5 As System.Windows.Forms.Label
+    Friend WithEvents Label7 As System.Windows.Forms.Label
+    Friend WithEvents nudQty As System.Windows.Forms.NumericUpDown
+    Friend WithEvents errP As System.Windows.Forms.ErrorProvider
 End Class

@@ -1,29 +1,41 @@
 ﻿Imports System.Data.SqlClient
 
 Public Class frmShopping
-    ' Private MemberInfo As frmMember
     Private blnOrderStarted As Boolean = False
+    Private Members As CMembers
+    'Private Orders As COrders
+    'Private Products As CProducts
 
-    Private Sub frmShopping_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        loadMembers()
+    Public Sub New()
+        ' This call is required by the designer.
+        InitializeComponent()
+
+        ' Add any initialization after the InitializeComponent() call.
+        Members = New CMembers
     End Sub
 
-    Private Sub loadMembers()
-        Dim members As New CMembers
-        Dim dataReader As SqlDataReader = members.GetMemberList()
+    Private Sub frmShopping_Shown(sender As Object, e As EventArgs) Handles Me.Shown
+        LoadMembers()
+        LoadProducts("")
+        LoadEmployees()
+        resetTotals()
+    End Sub
+
+    Private Sub LoadMembers()
+        Dim dataReader As SqlDataReader = Members.GetMemberList()
+        cboMembers.Items.Clear()
         While dataReader.Read
-            cboMembers.Items.Add(dataReader("mbrid") & " - " & dataReader("lname") & ", " & dataReader("fname"))
+            cboMembers.Items.Add(dataReader.Item("lname") & ", " & dataReader.Item("fname"))
         End While
         dataReader.Close()
     End Sub
 
-    Private Sub loadProducts()
-
+    Private Sub LoadEmployees()
+        cboEmployee.Items.Clear()
     End Sub
 
-    Private Sub tsbMember_Click(sender As Object, e As EventArgs) Handles tsbMember.Click
-        intNextAction = ACTION_MEMBER
-        Me.Hide()
+    Private Sub LoadProducts(ByRef strSearch As String)
+        lstItems.Items.Clear()
     End Sub
 
     Private Sub PerformNextAction()
@@ -63,13 +75,107 @@ Public Class frmShopping
         tsbProxy.DisplayStyle = ToolStripItemDisplayStyle.Image
     End Sub
 
+    Private Sub tsbContact_Click(sender As Object, e As EventArgs) Handles tsbContact.Click
+        intNextAction = ACTION_CONTACT
+        hideForm()
+    End Sub
+
+    Private Sub tsbShop_Click(sender As Object, e As EventArgs) Handles tsbShop.Click
+        'do nothing
+    End Sub
+
+    Private Sub tsbProgram_Click(sender As Object, e As EventArgs) Handles tsbProgram.Click
+        intNextAction = ACTION_PROGRAM
+        hideForm()
+    End Sub
+
+    Private Sub tsbHelp_Click(sender As Object, e As EventArgs) Handles tsbHelp.Click
+        intNextAction = ACTION_HELP
+        hideForm()
+    End Sub
+
     Private Sub tsbHome_Click(sender As Object, e As EventArgs) Handles tsbHome.Click
         intNextAction = ACTION_HOME
-        Me.Hide()
+        hideForm()
     End Sub
 
     Private Sub tsbReturn_Click(sender As Object, e As EventArgs) Handles tsbReturn.Click
         intNextAction = ACTION_NONE
-        Me.Hide()
+        hideForm()
     End Sub
+
+    Private Sub tsbMember_Click(sender As Object, e As EventArgs) Handles tsbMember.Click
+        intNextAction = ACTION_MEMBER
+        hideForm()
+    End Sub
+
+    Private Sub hideForm()
+        If Not blnOrderStarted Then
+            Me.Hide()
+        Else
+            MessageBox.Show("Please finish or cancel the current order.", "Order in Process", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+        End If
+    End Sub
+
+    Private Sub StartNewOrder()
+        Dim blnError As Boolean = False
+        errP.Clear()
+        If cboEmployee.SelectedIndex < 0 Then
+            blnError = True
+            errP.SetError(cboEmployee, "Please select your Employee Id")
+        End If
+        If cboMembers.SelectedIndex < 0 Then
+            blnError = True
+            errP.SetError(cboMembers, "Please select a member to create an order")
+        End If
+
+        If Not blnError Then
+            blnOrderStarted = True
+            lblMemName.Text = cboMembers.SelectedItem.ToString
+            'lblOrderNum = Orders.
+            cboEmployee.Enabled = False
+            cboMembers.Enabled = False
+            resetTotals()
+        End If
+    End Sub
+  
+    Private Sub btnNew_Click(sender As Object, e As EventArgs) Handles btnNew.Click
+        If Not blnOrderStarted Then
+            StartNewOrder()
+        Else
+            MessageBox.Show("Order currently in process for " & cboMembers.SelectedItem.ToString,
+                            "Order in Process", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End If
+    End Sub
+
+    Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
+        LoadProducts(txtSearch.Text)
+    End Sub
+
+    Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
+        If Not blnOrderStarted Then
+            StartNewOrder() ' just in case they forgot to start new order
+        End If
+        'add selected item * qty to order
+        nudQty.Value = nudQty.Minimum
+    End Sub
+
+    Private Sub lstItems_DoubleClick(sender As Object, e As EventArgs) Handles lstItems.DoubleClick
+        btnAdd.PerformClick()
+    End Sub
+
+    Private Sub btnCancelOrder_Click(sender As Object, e As EventArgs) Handles btnCancelOrder.Click
+        lblMemName.Text = ""
+        lblOrderNum.Text = ""
+        lsvLines.Items.Clear()
+        resetTotals()
+        blnOrderStarted = False
+    End Sub
+
+    Private Sub resetTotals()
+        lblSub.Text = "0.00"
+        lblTax.Text = "0.00"
+        lblTotal.Text = "0.00"
+    End Sub
+
 End Class
