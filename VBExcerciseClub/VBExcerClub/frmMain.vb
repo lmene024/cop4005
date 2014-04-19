@@ -86,4 +86,8 @@
         Me.Show()
         PerformNextAction()
     End Sub
+
+    Private Sub tsbExit_Click(sender As Object, e As EventArgs) Handles tsbExit.Click
+        EndProgram()
+    End Sub
 End Class

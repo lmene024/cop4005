@@ -31,9 +31,9 @@ Partial Class frmShopping
         Me.tsbReturn = New System.Windows.Forms.ToolStripButton()
         Me.tsbHelp = New System.Windows.Forms.ToolStripButton()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
+        Me.lblTotal = New System.Windows.Forms.Label()
+        Me.lblTax = New System.Windows.Forms.Label()
+        Me.lblSub = New System.Windows.Forms.Label()
         Me.lblOrderNum = New System.Windows.Forms.Label()
         Me.lsvLines = New System.Windows.Forms.ListView()
         Me.lblMemName = New System.Windows.Forms.Label()
@@ -44,16 +44,17 @@ Partial Class frmShopping
         Me.btnNew = New System.Windows.Forms.Button()
         Me.cboMembers = New System.Windows.Forms.ComboBox()
         Me.grpItems = New System.Windows.Forms.GroupBox()
+        Me.Label5 = New System.Windows.Forms.Label()
         Me.btnAdd = New System.Windows.Forms.Button()
         Me.btnSearch = New System.Windows.Forms.Button()
         Me.txtSearch = New System.Windows.Forms.TextBox()
         Me.lstItems = New System.Windows.Forms.ListBox()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.Label5 = New System.Windows.Forms.Label()
+        Me.nudQty = New System.Windows.Forms.NumericUpDown()
         Me.ToolStrip1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.grpItems.SuspendLayout()
+        CType(Me.nudQty, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ToolStrip1
@@ -132,7 +133,7 @@ Partial Class frmShopping
         Me.tsbReturn.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.tsbReturn.Name = "tsbReturn"
         Me.tsbReturn.Size = New System.Drawing.Size(65, 70)
-        Me.tsbReturn.Text = "Exit"
+        Me.tsbReturn.Text = "Return"
         '
         'tsbHelp
         '
@@ -148,9 +149,9 @@ Partial Class frmShopping
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.Label4)
-        Me.GroupBox1.Controls.Add(Me.Label3)
-        Me.GroupBox1.Controls.Add(Me.Label2)
+        Me.GroupBox1.Controls.Add(Me.lblTotal)
+        Me.GroupBox1.Controls.Add(Me.lblTax)
+        Me.GroupBox1.Controls.Add(Me.lblSub)
         Me.GroupBox1.Controls.Add(Me.lblOrderNum)
         Me.GroupBox1.Controls.Add(Me.lsvLines)
         Me.GroupBox1.Controls.Add(Me.lblMemName)
@@ -161,38 +162,38 @@ Partial Class frmShopping
         Me.GroupBox1.TabIndex = 2
         Me.GroupBox1.TabStop = False
         '
-        'Label4
+        'lblTotal
         '
-        Me.Label4.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label4.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(171, 426)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(171, 34)
-        Me.Label4.TabIndex = 6
-        Me.Label4.Text = "Total"
-        Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.lblTotal.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblTotal.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTotal.Location = New System.Drawing.Point(171, 426)
+        Me.lblTotal.Name = "lblTotal"
+        Me.lblTotal.Size = New System.Drawing.Size(171, 34)
+        Me.lblTotal.TabIndex = 6
+        Me.lblTotal.Text = "Total"
+        Me.lblTotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'Label3
+        'lblTax
         '
-        Me.Label3.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label3.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(171, 392)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(171, 34)
-        Me.Label3.TabIndex = 5
-        Me.Label3.Text = "Tax"
-        Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.lblTax.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblTax.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTax.Location = New System.Drawing.Point(171, 392)
+        Me.lblTax.Name = "lblTax"
+        Me.lblTax.Size = New System.Drawing.Size(171, 34)
+        Me.lblTax.TabIndex = 5
+        Me.lblTax.Text = "Tax"
+        Me.lblTax.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'Label2
+        'lblSub
         '
-        Me.Label2.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label2.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(171, 358)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(171, 34)
-        Me.Label2.TabIndex = 4
-        Me.Label2.Text = "SubTotal"
-        Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.lblSub.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblSub.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblSub.Location = New System.Drawing.Point(171, 358)
+        Me.lblSub.Name = "lblSub"
+        Me.lblSub.Size = New System.Drawing.Size(171, 34)
+        Me.lblSub.TabIndex = 4
+        Me.lblSub.Text = "SubTotal"
+        Me.lblSub.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'lblOrderNum
         '
@@ -291,8 +292,8 @@ Partial Class frmShopping
         '
         'grpItems
         '
+        Me.grpItems.Controls.Add(Me.nudQty)
         Me.grpItems.Controls.Add(Me.Label5)
-        Me.grpItems.Controls.Add(Me.TextBox1)
         Me.grpItems.Controls.Add(Me.btnAdd)
         Me.grpItems.Controls.Add(Me.btnSearch)
         Me.grpItems.Controls.Add(Me.txtSearch)
@@ -303,6 +304,16 @@ Partial Class frmShopping
         Me.grpItems.TabIndex = 6
         Me.grpItems.TabStop = False
         Me.grpItems.Text = "Items"
+        '
+        'Label5
+        '
+        Me.Label5.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(159, 367)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(34, 17)
+        Me.Label5.TabIndex = 5
+        Me.Label5.Text = "Qty:"
         '
         'btnAdd
         '
@@ -344,23 +355,14 @@ Partial Class frmShopping
         Me.lstItems.Size = New System.Drawing.Size(453, 276)
         Me.lstItems.TabIndex = 0
         '
-        'TextBox1
+        'nudQty
         '
-        Me.TextBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.TextBox1.Location = New System.Drawing.Point(203, 364)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(69, 25)
-        Me.TextBox1.TabIndex = 4
-        '
-        'Label5
-        '
-        Me.Label5.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(159, 367)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(34, 17)
-        Me.Label5.TabIndex = 5
-        Me.Label5.Text = "Qty:"
+        Me.nudQty.Location = New System.Drawing.Point(212, 365)
+        Me.nudQty.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.nudQty.Name = "nudQty"
+        Me.nudQty.Size = New System.Drawing.Size(63, 25)
+        Me.nudQty.TabIndex = 6
+        Me.nudQty.Value = New Decimal(New Integer() {1, 0, 0, 0})
         '
         'frmShopping
         '
@@ -385,6 +387,7 @@ Partial Class frmShopping
         Me.GroupBox2.ResumeLayout(False)
         Me.grpItems.ResumeLayout(False)
         Me.grpItems.PerformLayout()
+        CType(Me.nudQty, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -397,9 +400,9 @@ Partial Class frmShopping
     Friend WithEvents tsbReturn As System.Windows.Forms.ToolStripButton
     Friend WithEvents tsbHelp As System.Windows.Forms.ToolStripButton
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
-    Friend WithEvents Label4 As System.Windows.Forms.Label
-    Friend WithEvents Label3 As System.Windows.Forms.Label
-    Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents lblTotal As System.Windows.Forms.Label
+    Friend WithEvents lblTax As System.Windows.Forms.Label
+    Friend WithEvents lblSub As System.Windows.Forms.Label
     Friend WithEvents lblOrderNum As System.Windows.Forms.Label
     Friend WithEvents lsvLines As System.Windows.Forms.ListView
     Friend WithEvents lblMemName As System.Windows.Forms.Label
@@ -415,5 +418,5 @@ Partial Class frmShopping
     Friend WithEvents txtSearch As System.Windows.Forms.TextBox
     Friend WithEvents lstItems As System.Windows.Forms.ListBox
     Friend WithEvents Label5 As System.Windows.Forms.Label
-    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
+    Friend WithEvents nudQty As System.Windows.Forms.NumericUpDown
 End Class
