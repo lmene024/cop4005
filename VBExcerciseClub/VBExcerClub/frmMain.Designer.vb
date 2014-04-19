@@ -97,7 +97,7 @@ Partial Class frmMain
         Me.tsbContact.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.tsbContact.Name = "tsbContact"
         Me.tsbContact.Size = New System.Drawing.Size(65, 70)
-        Me.tsbContact.Text = "Shopping"
+        Me.tsbContact.Text = "Contact"
         '
         'tsbExit
         '
