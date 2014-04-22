@@ -5,7 +5,7 @@ Public Class CEmployees
 
     'constructor
     Public Sub New()
-        'instantiate the CMember object
+        'instantiate the CEmployee object
         _Employee = New CEmployee
     End Sub
 
