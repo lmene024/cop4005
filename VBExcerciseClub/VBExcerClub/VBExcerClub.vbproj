@@ -91,6 +91,8 @@
     <Compile Include="CEmployees.vb" />
     <Compile Include="CMember.vb" />
     <Compile Include="CMembers.vb" />
+    <Compile Include="COrder.vb" />
+    <Compile Include="COrders.vb" />
     <Compile Include="CProgram.vb" />
     <Compile Include="CPrograms.vb" />
     <Compile Include="frmInvoice.Designer.vb">
