@@ -5,7 +5,7 @@ Public Class frmShopping
     Private DataReader As SqlDataReader
     Private Members As CMembers
     Private Employees As CEmployees
-    'Private Orders As COrders
+    Private Orders As COrders
     'Private Products As CProducts
 
     Public Sub New()
@@ -15,6 +15,7 @@ Public Class frmShopping
         ' Add any initialization after the InitializeComponent() call.
         Members = New CMembers
         Employees = New CEmployees
+        Orders = New COrders
     End Sub
 
     Private Sub frmShopping_Shown(sender As Object, e As EventArgs) Handles Me.Shown
@@ -138,9 +139,10 @@ Public Class frmShopping
         End If
 
         If Not blnError Then
+            Orders.CreateNewOrder()
             blnOrderStarted = True
             lblMemName.Text = cboMembers.SelectedItem.ToString
-            'lblOrderNum = Orders.
+            lblOrderNum.Text = Orders.CurrentObject.InvoiceID
             cboEmployee.Enabled = False
             cboMembers.Enabled = False
             resetTotals()
