@@ -12,22 +12,20 @@
 
     'constructor
     Public Sub New()
-        SetInvoiceID()
-        _mstrEmpID = ""
-        _mstrMbrID = ""
+        _mstrInvoiceID = ""
         _mdtmInvoiceDate = New Date(Now.Year, Now.Month, Now.Day)
     End Sub
 
-    Public Sub SetInvoiceID()
+    Public Sub NewInvoiceID()
         Dim strLastInvoice As String = myDB.GetSingleValueFromSP("sp_GetLastInvoiceID")
         Dim strInvoiceID As String
 
-        If String.IsNullOrEmpty(strLastInvoice) Then
+        If String.IsNullOrEmpty(strLastInvoice) Or strLastInvoice = "-1" Then
             strInvoiceID = "I0001"
         Else
             strInvoiceID = "I" + ((CType((Right(strLastInvoice, 4)), Integer)) + 1)
-            _mstrInvoiceID = strInvoiceID
         End If
+        _mstrInvoiceID = strInvoiceID
 
     End Sub
 

@@ -1,11 +1,11 @@
 ﻿Imports System.Data.SqlClient
 Public Class COrders
-   
+
     'This class represents the ProdInvoice table and the associated business rules for it
     Private _Order As COrder
 
-        'constructor
-        Public Sub New()
+    'constructor
+    Public Sub New()
         'instantiate the COrder object
         _Order = New COrder
     End Sub
@@ -25,19 +25,20 @@ Public Class COrders
         End If
     End Function
 
-        Public Sub Clear()
+    Public Sub Clear()
         _Order = New COrder() 'so much faster this way
-        End Sub
+    End Sub
 
     Public Sub CreateNewOrder() 'Call me when you're clearing the screen to add a new student!
         'This clears the old student and sets it as new
         Clear()
+        _Order.NewInvoiceID()
         _Order.IsNewOrder = True
     End Sub
 
-        Public Function Save() As Integer
+    Public Function Save() As Integer
         Return _Order.Save()
-        End Function
+    End Function
 
     Public Function GetOrderList() As SqlDataReader
         Return myDB.GetDataReaderBySP("dbo.sp_GetOrderList")

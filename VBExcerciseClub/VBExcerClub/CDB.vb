@@ -110,15 +110,20 @@ Public Class CDB
 
     Public Function GetSingleValueFromSP(ByVal strSP As String, ByRef params As ArrayList) As String
         Dim dr As SqlDataReader = GetDataReaderBySP(strSP, params)
+        Dim strResult As String 'new
         If Not dr Is Nothing Then
             If dr.Read() Then
-                Return dr.GetValue(0).ToString()
+                ' Return dr.GetValue(0).ToString()
+                strResult = dr.GetValue(0).ToString()  'new
+                dr.Close()  'new
+                Return strResult  'new
             Else
                 Return -1 'no data
             End If
         End If
         Return -2 'failed to connect to db
     End Function
+
 
     Public Function GetSingleValueFromSP(strSP As String, param As SqlParameter) As String
         Dim al As ArrayList

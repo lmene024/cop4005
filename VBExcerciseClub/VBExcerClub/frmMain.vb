@@ -33,6 +33,7 @@
         'instantiate an object for each form in the application
         MemberInfo = New frmMember
         ShoppingCart = New frmShopping
+
         'open the database
         Try
             myDB.OpenDB()
