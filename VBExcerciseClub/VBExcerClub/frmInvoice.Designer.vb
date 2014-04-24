@@ -1,4 +1,4 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
 Partial Class frmInvoice
     Inherits System.Windows.Forms.Form
 
@@ -32,23 +32,19 @@ Partial Class frmInvoice
         Me.VBExerClubDBDataSet = New VBExcerClub.VBExerClubDBDataSet()
         Me.PRODINVOICEBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.PRODINVOICETableAdapter = New VBExcerClub.VBExerClubDBDataSetTableAdapters.PRODINVOICETableAdapter()
-        Me.dgvItems = New System.Windows.Forms.DataGridView()
         Me.INVOICEITEMBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.INVOICEITEMTableAdapter = New VBExcerClub.VBExerClubDBDataSetTableAdapters.INVOICEITEMTableAdapter()
-        Me.INVIDDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PRODIDDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.QTYDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PRICEDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.lblMember = New System.Windows.Forms.Label()
         Me.lblEmpID = New System.Windows.Forms.Label()
-        Me.Label10 = New System.Windows.Forms.Label()
-        Me.Label11 = New System.Windows.Forms.Label()
-        Me.Label12 = New System.Windows.Forms.Label()
+        Me.lblOrderTotal = New System.Windows.Forms.Label()
+        Me.lblTotalCost = New System.Windows.Forms.Label()
+        Me.lblTax = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
+        Me.dgvItems = New System.Windows.Forms.DataGridView()
         CType(Me.VBExerClubDBDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PRODINVOICEBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.dgvItems, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.INVOICEITEMBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dgvItems, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
@@ -125,20 +121,6 @@ Partial Class frmInvoice
         '
         Me.PRODINVOICETableAdapter.ClearBeforeFill = True
         '
-        'dgvItems
-        '
-        Me.dgvItems.AutoGenerateColumns = False
-        Me.dgvItems.BackgroundColor = System.Drawing.Color.White
-        Me.dgvItems.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.dgvItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvItems.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.INVIDDataGridViewTextBoxColumn, Me.PRODIDDataGridViewTextBoxColumn, Me.QTYDataGridViewTextBoxColumn, Me.PRICEDataGridViewTextBoxColumn})
-        Me.dgvItems.DataSource = Me.INVOICEITEMBindingSource
-        Me.dgvItems.Location = New System.Drawing.Point(34, 194)
-        Me.dgvItems.Name = "dgvItems"
-        Me.dgvItems.ReadOnly = True
-        Me.dgvItems.Size = New System.Drawing.Size(452, 150)
-        Me.dgvItems.TabIndex = 6
-        '
         'INVOICEITEMBindingSource
         '
         Me.INVOICEITEMBindingSource.DataMember = "INVOICEITEM"
@@ -147,34 +129,6 @@ Partial Class frmInvoice
         'INVOICEITEMTableAdapter
         '
         Me.INVOICEITEMTableAdapter.ClearBeforeFill = True
-        '
-        'INVIDDataGridViewTextBoxColumn
-        '
-        Me.INVIDDataGridViewTextBoxColumn.DataPropertyName = "INVID"
-        Me.INVIDDataGridViewTextBoxColumn.HeaderText = "INVID"
-        Me.INVIDDataGridViewTextBoxColumn.Name = "INVIDDataGridViewTextBoxColumn"
-        Me.INVIDDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'PRODIDDataGridViewTextBoxColumn
-        '
-        Me.PRODIDDataGridViewTextBoxColumn.DataPropertyName = "PRODID"
-        Me.PRODIDDataGridViewTextBoxColumn.HeaderText = "PRODID"
-        Me.PRODIDDataGridViewTextBoxColumn.Name = "PRODIDDataGridViewTextBoxColumn"
-        Me.PRODIDDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'QTYDataGridViewTextBoxColumn
-        '
-        Me.QTYDataGridViewTextBoxColumn.DataPropertyName = "QTY"
-        Me.QTYDataGridViewTextBoxColumn.HeaderText = "QTY"
-        Me.QTYDataGridViewTextBoxColumn.Name = "QTYDataGridViewTextBoxColumn"
-        Me.QTYDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'PRICEDataGridViewTextBoxColumn
-        '
-        Me.PRICEDataGridViewTextBoxColumn.DataPropertyName = "PRICE"
-        Me.PRICEDataGridViewTextBoxColumn.HeaderText = "PRICE"
-        Me.PRICEDataGridViewTextBoxColumn.Name = "PRICEDataGridViewTextBoxColumn"
-        Me.PRICEDataGridViewTextBoxColumn.ReadOnly = True
         '
         'lblMember
         '
@@ -192,29 +146,29 @@ Partial Class frmInvoice
         Me.lblEmpID.Size = New System.Drawing.Size(79, 21)
         Me.lblEmpID.TabIndex = 9
         '
-        'Label10
+        'lblOrderTotal
         '
-        Me.Label10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Label10.Location = New System.Drawing.Point(407, 498)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(79, 21)
-        Me.Label10.TabIndex = 10
+        Me.lblOrderTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.lblOrderTotal.Location = New System.Drawing.Point(407, 498)
+        Me.lblOrderTotal.Name = "lblOrderTotal"
+        Me.lblOrderTotal.Size = New System.Drawing.Size(79, 21)
+        Me.lblOrderTotal.TabIndex = 10
         '
-        'Label11
+        'lblTotalCost
         '
-        Me.Label11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Label11.Location = New System.Drawing.Point(407, 426)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(79, 21)
-        Me.Label11.TabIndex = 11
+        Me.lblTotalCost.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.lblTotalCost.Location = New System.Drawing.Point(407, 426)
+        Me.lblTotalCost.Name = "lblTotalCost"
+        Me.lblTotalCost.Size = New System.Drawing.Size(79, 21)
+        Me.lblTotalCost.TabIndex = 11
         '
-        'Label12
+        'lblTax
         '
-        Me.Label12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Label12.Location = New System.Drawing.Point(407, 461)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(79, 21)
-        Me.Label12.TabIndex = 12
+        Me.lblTax.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.lblTax.Location = New System.Drawing.Point(407, 461)
+        Me.lblTax.Name = "lblTax"
+        Me.lblTax.Size = New System.Drawing.Size(79, 21)
+        Me.lblTax.TabIndex = 12
         '
         'Label13
         '
@@ -226,6 +180,14 @@ Partial Class frmInvoice
         Me.Label13.TabIndex = 13
         Me.Label13.Text = "Invoice"
         '
+        'dgvItems
+        '
+        Me.dgvItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvItems.Location = New System.Drawing.Point(34, 208)
+        Me.dgvItems.Name = "dgvItems"
+        Me.dgvItems.Size = New System.Drawing.Size(452, 150)
+        Me.dgvItems.TabIndex = 14
+        '
         'frmInvoice
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -233,13 +195,13 @@ Partial Class frmInvoice
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(516, 542)
         Me.ControlBox = False
+        Me.Controls.Add(Me.dgvItems)
         Me.Controls.Add(Me.Label13)
-        Me.Controls.Add(Me.Label12)
-        Me.Controls.Add(Me.Label11)
-        Me.Controls.Add(Me.Label10)
+        Me.Controls.Add(Me.lblTax)
+        Me.Controls.Add(Me.lblTotalCost)
+        Me.Controls.Add(Me.lblOrderTotal)
         Me.Controls.Add(Me.lblEmpID)
         Me.Controls.Add(Me.lblMember)
-        Me.Controls.Add(Me.dgvItems)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Label4)
@@ -250,8 +212,8 @@ Partial Class frmInvoice
         Me.Text = "Invoice"
         CType(Me.VBExerClubDBDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PRODINVOICEBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.dgvItems, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.INVOICEITEMBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgvItems, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -265,17 +227,13 @@ Partial Class frmInvoice
     Friend WithEvents VBExerClubDBDataSet As VBExcerClub.VBExerClubDBDataSet
     Friend WithEvents PRODINVOICEBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents PRODINVOICETableAdapter As VBExcerClub.VBExerClubDBDataSetTableAdapters.PRODINVOICETableAdapter
-    Friend WithEvents dgvItems As System.Windows.Forms.DataGridView
     Friend WithEvents INVOICEITEMBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents INVOICEITEMTableAdapter As VBExcerClub.VBExerClubDBDataSetTableAdapters.INVOICEITEMTableAdapter
-    Friend WithEvents INVIDDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents PRODIDDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents QTYDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents PRICEDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents lblMember As System.Windows.Forms.Label
     Friend WithEvents lblEmpID As System.Windows.Forms.Label
-    Friend WithEvents Label10 As System.Windows.Forms.Label
-    Friend WithEvents Label11 As System.Windows.Forms.Label
-    Friend WithEvents Label12 As System.Windows.Forms.Label
+    Friend WithEvents lblOrderTotal As System.Windows.Forms.Label
+    Friend WithEvents lblTotalCost As System.Windows.Forms.Label
+    Friend WithEvents lblTax As System.Windows.Forms.Label
     Friend WithEvents Label13 As System.Windows.Forms.Label
+    Friend WithEvents dgvItems As System.Windows.Forms.DataGridView
 End Class
