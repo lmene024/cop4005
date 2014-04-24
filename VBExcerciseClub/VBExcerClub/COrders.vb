@@ -69,15 +69,13 @@ Public Class COrders
             If sqlDR.Read() Then
                 With _Order
                     'Review This! What I chose was a guess for what is needed.
-                    .InvoiceID = sqlDR.Item("InvoiceID") & ""
+                    .InvoiceID = sqlDR.Item("InvID") & ""
                     .EmpID = sqlDR.Item("EmpID") & ""
                     .MbrID = sqlDR.Item("MbrID") & ""
-                    .ProdTotal = sqlDR.Item("ProdTotal") & ""
-                    .TaxTotal = sqlDR.Item("TaxTotal") & ""
                     .InvTotal = sqlDR.Item("InvTotal") & ""
-                    .InvoiceDate = sqlDR.Item("InvocieDate") & ""
-                    .MerrItems = sqlDR.Item("MerrItems") & ""
-
+                    .ProdTotal = sqlDR.Item("ProductTotal") & ""
+                    .TaxTotal = sqlDR.Item("TaxTotal") & ""
+                    .InvoiceDate = sqlDR.Item("InvDate") & ""
                 End With
             Else
                 'failed

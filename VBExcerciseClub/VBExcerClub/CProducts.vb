@@ -38,18 +38,23 @@ Public Class CProducts
     End Function
 
     Public Function GetProductList() As SqlDataReader
-        Return myDB.GetDataReaderBySP("dbo.sp_GetProductList")
+        Return myDB.GetDataReaderBySP("sp_GetProductList")
+    End Function
+
+    Public Function SearchProductList(ByVal strSearch As String) As SqlDataReader
+        Dim sParam As New SqlParameter("search", strSearch)
+        Return myDB.GetDataReaderBySP("sp_GetProductListWithSearch", sParam)
     End Function
 
     Public Function GetProductByID(strID As String) As CProduct
         Dim aParam As New SqlParameter("ID", strID)
-        FillObject(myDB.GetDataReaderBySP("dbo.sp_GetProductByID", aParam))
+        FillObject(myDB.GetDataReaderBySP("sp_GetProductByID", aParam))
         Return _Product
     End Function
 
     Public Function GetProductByDesc(strDesc As String) As CProduct
         Dim aParam As New SqlParameter("Description", strDesc)
-        FillObject(myDB.GetDataReaderBySP("dbo.sp_GetProductByDesc", aParam))
+        FillObject(myDB.GetDataReaderBySP("sp_GetProductByDesc", aParam))
         Return _Product
     End Function
 
@@ -59,11 +64,11 @@ Public Class CProducts
         Using sqlDR
             If sqlDR.Read() Then
                 With _Product
-                    .ProductID = sqlDR.Item("ProductID") & ""
-                    .ProductDescription = sqlDR.Item("ProductDescription") & ""
+                    .ProductID = sqlDR.Item("ProdID") & ""
+                    .ProductDescription = sqlDR.Item("ProdDesc") & ""
                     .WhCost = sqlDR.Item("WhCost") & ""
-                    .RetailPrice = sqlDR.Item("RetailPrice") & ""
-                    'Do not know if 'isTaxable' is needed here
+                    .RetailPrice = sqlDR.Item("RetPrice") & ""
+                    .isTaxable = sqlDR.Item("taxable")
 
                 End With
             Else

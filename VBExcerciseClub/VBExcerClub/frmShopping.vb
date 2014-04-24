@@ -6,7 +6,7 @@ Public Class frmShopping
     Private Members As CMembers
     Private Employees As CEmployees
     Private Orders As COrders
-    'Private Products As CProducts
+    Private Products As CProducts
 
     Public Sub New()
         ' This call is required by the designer.
@@ -16,6 +16,7 @@ Public Class frmShopping
         Members = New CMembers
         Employees = New CEmployees
         Orders = New COrders
+        Products = New CProducts
     End Sub
 
     Private Sub frmShopping_Shown(sender As Object, e As EventArgs) Handles Me.Shown
@@ -44,7 +45,16 @@ Public Class frmShopping
     End Sub
 
     Private Sub LoadProducts(ByRef strSearch As String)
+        If Not strSearch = Nothing Then
+            DataReader = Products.SearchProductList(strSearch)
+        Else
+            DataReader = Products.GetProductList()
+        End If
         lstItems.Items.Clear()
+        While DataReader.Read
+            lstItems.Items.Add(DataReader.Item("prodid") & " - " & DataReader.Item("proddesc"))
+        End While
+        DataReader.Close()
     End Sub
 
     Private Sub PerformNextAction()
@@ -126,7 +136,7 @@ Public Class frmShopping
         End If
     End Sub
 
-    Private Sub StartNewOrder()
+    Private Function StartNewOrder() As Boolean
         Dim blnError As Boolean = False
         errP.Clear()
         If cboEmployee.SelectedIndex < 0 Then
@@ -145,10 +155,39 @@ Public Class frmShopping
             lblOrderNum.Text = Orders.CurrentObject.InvoiceID
             cboEmployee.Enabled = False
             cboMembers.Enabled = False
+            initListViewColumns()
             resetTotals()
         End If
+        Return Not blnError
+    End Function
+
+    Private Sub initListViewColumns()
+        lsvLines.Columns.Add("Code")
+        lsvLines.Columns.Add("Description")
+        lsvLines.Columns.Add("Qty")
+        lsvLines.Columns.Add("Total")
     End Sub
-  
+
+    Private Sub addItemToOrder()
+        If lstItems.SelectedIndex < 0 Then 'nothing selected
+            Exit Sub
+        End If
+
+        Dim qty As Integer = nudQty.Value
+        Dim strProdID As String = Trim(lstItems.SelectedItem.ToString.Split("-"c)(0))
+        Dim product As CProduct = Products.GetProductByID(strProdID)
+        Dim line As New ListViewItem
+
+        With product
+            line.SubItems.Add(.ProductID)
+            line.SubItems.Add(.ProductDescription)
+            line.SubItems.Add(qty)
+            line.SubItems.Add(qty * .RetailPrice)
+        End With
+        lsvLines.Items.Add(line)
+
+    End Sub
+
     Private Sub btnNew_Click(sender As Object, e As EventArgs) Handles btnNew.Click
         If Not blnOrderStarted Then
             StartNewOrder()
@@ -163,11 +202,14 @@ Public Class frmShopping
     End Sub
 
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
+        Dim blnStarted As Boolean = True
         If Not blnOrderStarted Then
-            StartNewOrder() ' just in case they forgot to start new order
+            blnStarted = StartNewOrder() ' just in case they forgot to start new order
         End If
-        'add selected item * qty to order
-        nudQty.Value = nudQty.Minimum
+        If blnStarted Then
+            addItemToOrder()
+            nudQty.Value = nudQty.Minimum
+        End If
     End Sub
 
     Private Sub lstItems_DoubleClick(sender As Object, e As EventArgs) Handles lstItems.DoubleClick

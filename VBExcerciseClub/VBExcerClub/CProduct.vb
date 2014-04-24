@@ -61,7 +61,7 @@
         End Set
     End Property
 
-    Private Property isTaxable As Boolean
+    Public Property isTaxable As Boolean
         Get
             Return _isTaxable
         End Get
@@ -95,7 +95,7 @@
             paramList.Add(New SqlClient.SqlParameter("proddesc", _mstrProdDesc))
             paramList.Add(New SqlClient.SqlParameter("whcost", _msglWhCost))
             paramList.Add(New SqlClient.SqlParameter("retprice", _msglRetPrice))
-            paramList.Add(New SqlClient.SqlParameter("istaxable", _isTaxable))
+            paramList.Add(New SqlClient.SqlParameter("taxable", _isTaxable))
 
             Return paramList
         End Get

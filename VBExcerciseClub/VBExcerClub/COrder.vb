@@ -123,14 +123,12 @@
         Get
             Dim paramList As New ArrayList()
             paramList.Add(New SqlClient.SqlParameter("invid", _mstrInvoiceID))
-            paramList.Add(New SqlClient.SqlParameter("empid", _mstrEmpID))
             paramList.Add(New SqlClient.SqlParameter("mbrid", _mstrMbrID))
+            paramList.Add(New SqlClient.SqlParameter("empid", _mstrEmpID))
+            paramList.Add(New SqlClient.SqlParameter("invtotal", _msglInvTotal))
             paramList.Add(New SqlClient.SqlParameter("prodtotal", _msglProdTotal))
             paramList.Add(New SqlClient.SqlParameter("taxtotal", _msglTaxTotal))
-            paramList.Add(New SqlClient.SqlParameter("invtotal", _msglInvTotal))
             paramList.Add(New SqlClient.SqlParameter("invdate", _mdtmInvoiceDate))
-            paramList.Add(New SqlClient.SqlParameter("marritems", _marrItems))
-
             Return paramList
         End Get
     End Property
