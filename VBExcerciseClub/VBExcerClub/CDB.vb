@@ -118,6 +118,7 @@ Public Class CDB
                 dr.Close()  'new
                 Return strResult  'new
             Else
+                dr.Close()
                 Return -1 'no data
             End If
         End If

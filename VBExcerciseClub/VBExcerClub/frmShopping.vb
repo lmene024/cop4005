@@ -23,7 +23,8 @@ Public Class frmShopping
         LoadMembers()
         LoadProducts("")
         LoadEmployees()
-        resetTotals()
+        initListViewColumns()
+        calcTotals()
     End Sub
 
     Private Sub LoadMembers()
@@ -155,17 +156,22 @@ Public Class frmShopping
             lblOrderNum.Text = Orders.CurrentObject.InvoiceID
             cboEmployee.Enabled = False
             cboMembers.Enabled = False
-            initListViewColumns()
-            resetTotals()
+            calcTotals()
         End If
         Return Not blnError
     End Function
 
     Private Sub initListViewColumns()
+        lsvLines.Items.Clear()
         lsvLines.Columns.Add("Code")
         lsvLines.Columns.Add("Description")
         lsvLines.Columns.Add("Qty")
         lsvLines.Columns.Add("Total")
+        Dim intWidth As Integer
+        intWidth = lsvLines.Columns(0).Width +
+                  lsvLines.Columns(2).Width +
+                  lsvLines.Columns(3).Width
+        lsvLines.Columns(1).Width = lsvLines.Width - intWidth
     End Sub
 
     Private Sub addItemToOrder()
@@ -176,16 +182,16 @@ Public Class frmShopping
         Dim qty As Integer = nudQty.Value
         Dim strProdID As String = Trim(lstItems.SelectedItem.ToString.Split("-"c)(0))
         Dim product As CProduct = Products.GetProductByID(strProdID)
-        Dim line As New ListViewItem
+        Dim line As ListViewItem
 
         With product
-            line.SubItems.Add(.ProductID)
+            line = New ListViewItem(.ProductID)
             line.SubItems.Add(.ProductDescription)
             line.SubItems.Add(qty)
-            line.SubItems.Add(qty * .RetailPrice)
+            line.SubItems.Add(FormatCurrency(qty * .RetailPrice))
         End With
         lsvLines.Items.Add(line)
-
+        calcTotals()
     End Sub
 
     Private Sub btnNew_Click(sender As Object, e As EventArgs) Handles btnNew.Click
@@ -220,14 +226,24 @@ Public Class frmShopping
         lblMemName.Text = ""
         lblOrderNum.Text = ""
         lsvLines.Items.Clear()
-        resetTotals()
+        calcTotals()
+        cboEmployee.Enabled = True
+        cboMembers.Enabled = True
         blnOrderStarted = False
     End Sub
 
-    Private Sub resetTotals()
-        lblSub.Text = "0.00"
-        lblTax.Text = "0.00"
-        lblTotal.Text = "0.00"
+    Private Sub calcTotals()
+        Dim sngTotal As Single = 0
+
+        For Each lstRow As ListViewItem In lsvLines.Items
+            sngTotal += CSng(lstRow.SubItems(3).Text)
+        Next
+
+
+
+        lblSub.Text = FormatCurrency(sngTotal)
+        lblTax.Text = FormatCurrency(sngTotal * sTax)
+        lblTotal.Text = FormatCurrency(sngTotal + (sngTotal * sTax))
     End Sub
 
 End Class

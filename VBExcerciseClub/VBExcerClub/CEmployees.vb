@@ -91,6 +91,7 @@ Public Class CEmployees
                 'failed
             End If
         End Using
+        sqlDR.Close()
         Return _Employee
     End Function
 End Class

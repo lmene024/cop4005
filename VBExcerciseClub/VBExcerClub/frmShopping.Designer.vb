@@ -34,13 +34,13 @@ Partial Class frmShopping
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.lblTotal = New System.Windows.Forms.Label()
         Me.lblTax = New System.Windows.Forms.Label()
+        Me.btnCancelOrder = New System.Windows.Forms.Button()
         Me.lblSub = New System.Windows.Forms.Label()
         Me.btnConfirmOrder = New System.Windows.Forms.Button()
         Me.lblOrderNum = New System.Windows.Forms.Label()
         Me.lsvLines = New System.Windows.Forms.ListView()
         Me.lblMemName = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.btnCancelOrder = New System.Windows.Forms.Button()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.cboEmployee = New System.Windows.Forms.ComboBox()
@@ -194,6 +194,16 @@ Partial Class frmShopping
         Me.lblTax.Text = "Tax"
         Me.lblTax.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
+        'btnCancelOrder
+        '
+        Me.btnCancelOrder.Location = New System.Drawing.Point(9, 530)
+        Me.btnCancelOrder.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.btnCancelOrder.Name = "btnCancelOrder"
+        Me.btnCancelOrder.Size = New System.Drawing.Size(107, 30)
+        Me.btnCancelOrder.TabIndex = 4
+        Me.btnCancelOrder.Text = "Cancel"
+        Me.btnCancelOrder.UseVisualStyleBackColor = True
+        '
         'lblSub
         '
         Me.lblSub.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -236,6 +246,7 @@ Partial Class frmShopping
         Me.lsvLines.Size = New System.Drawing.Size(333, 281)
         Me.lsvLines.TabIndex = 2
         Me.lsvLines.UseCompatibleStateImageBehavior = False
+        Me.lsvLines.View = System.Windows.Forms.View.Details
         '
         'lblMemName
         '
@@ -261,16 +272,6 @@ Partial Class frmShopping
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Order"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'btnCancelOrder
-        '
-        Me.btnCancelOrder.Location = New System.Drawing.Point(9, 530)
-        Me.btnCancelOrder.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.btnCancelOrder.Name = "btnCancelOrder"
-        Me.btnCancelOrder.Size = New System.Drawing.Size(107, 30)
-        Me.btnCancelOrder.TabIndex = 4
-        Me.btnCancelOrder.Text = "Cancel"
-        Me.btnCancelOrder.UseVisualStyleBackColor = True
         '
         'GroupBox2
         '

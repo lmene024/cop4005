@@ -91,6 +91,7 @@ Public Class CMembers
                 'failed
             End If
         End Using
+        sqlDR.Close()
         Return _Member
     End Function
 End Class

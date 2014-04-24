@@ -81,6 +81,7 @@ Public Class COrders
                 'failed
             End If
         End Using
+        sqlDR.Close()
         Return _Order
     End Function
 End Class

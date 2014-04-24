@@ -75,6 +75,7 @@ Public Class CProducts
                 'failed
             End If
         End Using
+        sqlDR.Close()
         Return _Product
     End Function
 End Class
