@@ -185,7 +185,7 @@ Partial Class frmInvoice
         '
         Me.dgvItems.AllowUserToAddRows = False
         Me.dgvItems.AllowUserToDeleteRows = False
-        Me.dgvItems.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader
+        Me.dgvItems.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
         Me.dgvItems.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells
         Me.dgvItems.BackgroundColor = System.Drawing.Color.White
         Me.dgvItems.BorderStyle = System.Windows.Forms.BorderStyle.None
