@@ -31,7 +31,7 @@ Public Class frmShopping
     Private Sub LoadMembers()
         DataReader = Members.GetMemberList()
         cboMembers.Items.Clear()
-        While dataReader.Read
+        While DataReader.Read
             cboMembers.Items.Add(DataReader.Item("lname") & ", " & DataReader.Item("fname"))
         End While
         DataReader.Close()
@@ -190,12 +190,16 @@ Public Class frmShopping
         Dim strProdID As String = Trim(lstItems.SelectedItem.ToString.Split("-"c)(0))
         Dim product As CProduct = Products.GetProductByID(strProdID)
         Dim line As ListViewItem
+        Dim item As COrdItem = Orders.NewItem
 
         With product
             line = New ListViewItem(.ProductID)
+            item.ProdId = .ProductID
             line.SubItems.Add(.ProductDescription)
             line.SubItems.Add(qty)
+            item.Qty = qty
             line.SubItems.Add(FormatCurrency(qty * .RetailPrice))
+            item.Price = .RetailPrice * qty
             If (.isTaxable) Then
                 line.SubItems.Add("T")
             Else
@@ -203,6 +207,7 @@ Public Class frmShopping
             End If
         End With
         lsvLines.Items.Add(line)
+        Orders.AddItemToOrder(item)
         calcTotals()
     End Sub
 
@@ -234,7 +239,7 @@ Public Class frmShopping
         btnAdd.PerformClick()
     End Sub
 
-    Private Sub btnCancelOrder_Click(sender As Object, e As EventArgs) Handles btnCancelOrder.Click
+    Private Sub btnCancelOrder_Click(sender As Object, e As EventArgs) Handles btnCancelOrder.Click, cmbCancel.Click
         ClearOrder()
     End Sub
 
@@ -263,8 +268,6 @@ Public Class frmShopping
             End If
         Next
 
-
-
         lblSub.Text = FormatCurrency(sngTotal)
         lblTax.Text = FormatCurrency(sngTaxable * sTax)
         lblTotal.Text = FormatCurrency(sngTotal + (sngTotal * sTax))
@@ -278,13 +281,6 @@ Public Class frmShopping
             .ProdTotal = CSng(lblSub.Text)
             .TaxTotal = CSng(lblTax.Text)
             .InvoiceDate = New Date(Now.Year, Now.Month, Now.Day)
-            For Each line As ListViewItem In lsvLines.Items
-                Dim item As COrdItem = Orders.NewItem
-                item.ProdId = line.SubItems(0).Text
-                item.Qty = CInt(line.SubItems(2).Text)
-                item.Price = CSng(line.SubItems(3).Text)
-                Orders.AddItemToOrder(item)
-            Next
         End With
         Orders.Save()
         Orders.AddItems()
@@ -293,7 +289,14 @@ Public Class frmShopping
         ClearOrder()
     End Sub
 
-    Private Sub btnConfirmOrder_Click(sender As Object, e As EventArgs) Handles btnConfirmOrder.Click
+    Private Sub btnConfirmOrder_Click(sender As Object, e As EventArgs) Handles btnConfirmOrder.Click, cmbFinish.Click
         SaveOrder()
+    End Sub
+
+    Private Sub cmbDelete_Click(sender As Object, e As EventArgs) Handles cmbDelete.Click
+        Dim intIndex As Integer = lsvLines.SelectedIndices(0)
+        lsvLines.Items.RemoveAt(intIndex)
+        Orders.CurrentObject.Items.RemoveAt(intIndex)
+        calcTotals()
     End Sub
 End Class

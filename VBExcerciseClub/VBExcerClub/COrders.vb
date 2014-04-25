@@ -63,6 +63,10 @@ Public Class COrders
         Return _Order.Items.Add(item)
     End Function
 
+    Public Sub RemoveItemFromOrder(intIndex As Integer)
+        _Order.Items.RemoveAt(intIndex)
+    End Sub
+
     Public Function GetOrderItems(strID As String) As SqlDataReader
         Dim aParam As New SqlParameter("ID", strID)
         Return myDB.GetDataReaderBySP("dbo.sp_GetInvoiceItemListByInvoiceID", aParam)

@@ -39,6 +39,11 @@ Partial Class frmShopping
         Me.btnConfirmOrder = New System.Windows.Forms.Button()
         Me.lblOrderNum = New System.Windows.Forms.Label()
         Me.lsvLines = New System.Windows.Forms.ListView()
+        Me.cmsOrder = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.cmbDelete = New System.Windows.Forms.ToolStripMenuItem()
+        Me.cmbCancel = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.cmbFinish = New System.Windows.Forms.ToolStripMenuItem()
         Me.lblMemName = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
@@ -57,6 +62,7 @@ Partial Class frmShopping
         Me.errP = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.ToolStrip1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
+        Me.cmsOrder.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.grpItems.SuspendLayout()
         CType(Me.nudQty, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -239,7 +245,9 @@ Partial Class frmShopping
         Me.lsvLines.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lsvLines.ContextMenuStrip = Me.cmsOrder
         Me.lsvLines.ForeColor = System.Drawing.Color.DarkBlue
+        Me.lsvLines.FullRowSelect = True
         Me.lsvLines.Location = New System.Drawing.Point(9, 99)
         Me.lsvLines.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.lsvLines.Name = "lsvLines"
@@ -247,6 +255,35 @@ Partial Class frmShopping
         Me.lsvLines.TabIndex = 2
         Me.lsvLines.UseCompatibleStateImageBehavior = False
         Me.lsvLines.View = System.Windows.Forms.View.Details
+        '
+        'cmsOrder
+        '
+        Me.cmsOrder.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.cmbDelete, Me.cmbCancel, Me.ToolStripMenuItem1, Me.cmbFinish})
+        Me.cmsOrder.Name = "cmsOrder"
+        Me.cmsOrder.Size = New System.Drawing.Size(144, 76)
+        '
+        'cmbDelete
+        '
+        Me.cmbDelete.Name = "cmbDelete"
+        Me.cmbDelete.Size = New System.Drawing.Size(152, 22)
+        Me.cmbDelete.Text = "Delete Item"
+        '
+        'cmbCancel
+        '
+        Me.cmbCancel.Name = "cmbCancel"
+        Me.cmbCancel.Size = New System.Drawing.Size(152, 22)
+        Me.cmbCancel.Text = "Cancel Order"
+        '
+        'ToolStripMenuItem1
+        '
+        Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(149, 6)
+        '
+        'cmbFinish
+        '
+        Me.cmbFinish.Name = "cmbFinish"
+        Me.cmbFinish.Size = New System.Drawing.Size(152, 22)
+        Me.cmbFinish.Text = "Finish Order"
         '
         'lblMemName
         '
@@ -448,6 +485,7 @@ Partial Class frmShopping
         Me.ToolStrip1.ResumeLayout(False)
         Me.ToolStrip1.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
+        Me.cmsOrder.ResumeLayout(False)
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
         Me.grpItems.ResumeLayout(False)
@@ -489,4 +527,9 @@ Partial Class frmShopping
     Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents nudQty As System.Windows.Forms.NumericUpDown
     Friend WithEvents errP As System.Windows.Forms.ErrorProvider
+    Friend WithEvents cmsOrder As System.Windows.Forms.ContextMenuStrip
+    Friend WithEvents cmbDelete As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents cmbCancel As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ToolStripMenuItem1 As System.Windows.Forms.ToolStripSeparator
+    Friend WithEvents cmbFinish As System.Windows.Forms.ToolStripMenuItem
 End Class
