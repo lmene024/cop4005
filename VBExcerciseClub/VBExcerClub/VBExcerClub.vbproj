@@ -98,10 +98,18 @@
     <Compile Include="CProducts.vb" />
     <Compile Include="CProgram.vb" />
     <Compile Include="CPrograms.vb" />
+    <Compile Include="CSecurityRec.vb" />
+    <Compile Include="CSecurityRecs.vb" />
     <Compile Include="frmInvoice.Designer.vb">
       <DependentUpon>frmInvoice.vb</DependentUpon>
     </Compile>
     <Compile Include="frmInvoice.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogin.Designer.vb">
+      <DependentUpon>frmLogin.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmLogin.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmMain.vb">
@@ -149,6 +157,9 @@
   <ItemGroup>
     <EmbeddedResource Include="frmInvoice.resx">
       <DependentUpon>frmInvoice.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.vb</DependentUpon>
@@ -221,10 +232,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="VBExerClubDB.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="VBExerClubDB_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <DependentUpon>VBExerClubDB.mdf</DependentUpon>
     </Content>
   </ItemGroup>

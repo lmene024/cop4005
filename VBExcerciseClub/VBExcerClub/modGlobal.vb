@@ -11,7 +11,18 @@
     Public Const ACTION_CONTACT = 5
     Public Const ACTION_HELP = 6
 
+    Public Const SECURITY_N = 0
+    Public Const SECURITY_M = 100
+    Public Const SECURITY_ME = 110
+    Public Const SECURITY_MES = 111
+    Public Const SECURITY_MS = 101
+    Public Const SECURITY_E = 10
+    Public Const SECURITY_ES = 11
+    Public Const SECURITY_S = 1
+
     Public sTax As Single = 0.07
     Public intNextAction As Integer
+    Public userSecurity As Integer
+    Public employeeLogged As String
 End Module
 
