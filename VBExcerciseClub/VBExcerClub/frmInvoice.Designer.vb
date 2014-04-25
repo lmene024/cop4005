@@ -41,6 +41,7 @@ Partial Class frmInvoice
         Me.lblTax = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.dgvItems = New System.Windows.Forms.DataGridView()
+        Me.btnClose = New System.Windows.Forms.Button()
         CType(Me.VBExerClubDBDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PRODINVOICEBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.INVOICEITEMBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -81,7 +82,7 @@ Partial Class frmInvoice
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Courier New", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(324, 427)
+        Me.Label4.Location = New System.Drawing.Point(175, 420)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(77, 14)
         Me.Label4.TabIndex = 3
@@ -91,7 +92,7 @@ Partial Class frmInvoice
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Courier New", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(324, 462)
+        Me.Label5.Location = New System.Drawing.Point(175, 455)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(28, 14)
         Me.Label5.TabIndex = 4
@@ -101,7 +102,7 @@ Partial Class frmInvoice
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Courier New", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(324, 499)
+        Me.Label6.Location = New System.Drawing.Point(175, 492)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(84, 14)
         Me.Label6.TabIndex = 5
@@ -149,7 +150,7 @@ Partial Class frmInvoice
         'lblOrderTotal
         '
         Me.lblOrderTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.lblOrderTotal.Location = New System.Drawing.Point(407, 498)
+        Me.lblOrderTotal.Location = New System.Drawing.Point(258, 491)
         Me.lblOrderTotal.Name = "lblOrderTotal"
         Me.lblOrderTotal.Size = New System.Drawing.Size(79, 21)
         Me.lblOrderTotal.TabIndex = 10
@@ -157,7 +158,7 @@ Partial Class frmInvoice
         'lblTotalCost
         '
         Me.lblTotalCost.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.lblTotalCost.Location = New System.Drawing.Point(407, 426)
+        Me.lblTotalCost.Location = New System.Drawing.Point(258, 419)
         Me.lblTotalCost.Name = "lblTotalCost"
         Me.lblTotalCost.Size = New System.Drawing.Size(79, 21)
         Me.lblTotalCost.TabIndex = 11
@@ -165,7 +166,7 @@ Partial Class frmInvoice
         'lblTax
         '
         Me.lblTax.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.lblTax.Location = New System.Drawing.Point(407, 461)
+        Me.lblTax.Location = New System.Drawing.Point(258, 454)
         Me.lblTax.Name = "lblTax"
         Me.lblTax.Size = New System.Drawing.Size(79, 21)
         Me.lblTax.TabIndex = 12
@@ -174,7 +175,7 @@ Partial Class frmInvoice
         '
         Me.Label13.AutoSize = True
         Me.Label13.Font = New System.Drawing.Font("Courier New", 27.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label13.Location = New System.Drawing.Point(187, 25)
+        Me.Label13.Location = New System.Drawing.Point(102, 21)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(172, 41)
         Me.Label13.TabIndex = 13
@@ -182,19 +183,38 @@ Partial Class frmInvoice
         '
         'dgvItems
         '
+        Me.dgvItems.AllowUserToAddRows = False
+        Me.dgvItems.AllowUserToDeleteRows = False
+        Me.dgvItems.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
+        Me.dgvItems.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells
+        Me.dgvItems.BackgroundColor = System.Drawing.Color.White
+        Me.dgvItems.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.dgvItems.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
         Me.dgvItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvItems.Location = New System.Drawing.Point(34, 208)
+        Me.dgvItems.Location = New System.Drawing.Point(75, 210)
         Me.dgvItems.Name = "dgvItems"
-        Me.dgvItems.Size = New System.Drawing.Size(452, 150)
+        Me.dgvItems.ReadOnly = True
+        Me.dgvItems.RowHeadersVisible = False
+        Me.dgvItems.Size = New System.Drawing.Size(227, 150)
         Me.dgvItems.TabIndex = 14
+        '
+        'btnClose
+        '
+        Me.btnClose.Location = New System.Drawing.Point(34, 483)
+        Me.btnClose.Name = "btnClose"
+        Me.btnClose.Size = New System.Drawing.Size(75, 23)
+        Me.btnClose.TabIndex = 15
+        Me.btnClose.Text = "Close"
+        Me.btnClose.UseVisualStyleBackColor = True
         '
         'frmInvoice
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(516, 542)
+        Me.ClientSize = New System.Drawing.Size(377, 542)
         Me.ControlBox = False
+        Me.Controls.Add(Me.btnClose)
         Me.Controls.Add(Me.dgvItems)
         Me.Controls.Add(Me.Label13)
         Me.Controls.Add(Me.lblTax)
@@ -209,6 +229,7 @@ Partial Class frmInvoice
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Name = "frmInvoice"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Invoice"
         CType(Me.VBExerClubDBDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PRODINVOICEBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
@@ -236,4 +257,5 @@ Partial Class frmInvoice
     Friend WithEvents lblTax As System.Windows.Forms.Label
     Friend WithEvents Label13 As System.Windows.Forms.Label
     Friend WithEvents dgvItems As System.Windows.Forms.DataGridView
+    Friend WithEvents btnClose As System.Windows.Forms.Button
 End Class
