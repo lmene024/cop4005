@@ -93,6 +93,7 @@
     <Compile Include="CMembers.vb" />
     <Compile Include="COrder.vb" />
     <Compile Include="COrders.vb" />
+    <Compile Include="COrdItem.vb" />
     <Compile Include="CProduct.vb" />
     <Compile Include="CProducts.vb" />
     <Compile Include="CProgram.vb" />

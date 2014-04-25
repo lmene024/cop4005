@@ -5,7 +5,7 @@ Public Class frmInvoice
     Private Order As COrder
     Private Orders As COrders = New COrders
 
-    Private Sub New(strInvID As String)
+    Public Sub New(strInvID As String)
 
         ' This call is required by the designer.
         InitializeComponent()

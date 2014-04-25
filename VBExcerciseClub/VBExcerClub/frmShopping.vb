@@ -7,6 +7,7 @@ Public Class frmShopping
     Private Employees As CEmployees
     Private Orders As COrders
     Private Products As CProducts
+    Private InvoiceForm As frmInvoice
 
     Public Sub New()
         ' This call is required by the designer.
@@ -150,9 +151,13 @@ Public Class frmShopping
         End If
 
         If Not blnError Then
+            Dim strMember() As String = cboMembers.SelectedItem.ToString.Split(","c)
+            Dim strEmployee() As String = cboEmployee.SelectedItem.ToString.Split(","c)
             Orders.CreateNewOrder()
             blnOrderStarted = True
-            lblMemName.Text = cboMembers.SelectedItem.ToString
+            Members.GetMemberByName(Trim(strMember(0)), Trim(strMember(1)))
+            Employees.GetEmployeeByName(Trim(strEmployee(0)), Trim(strEmployee(1)))
+            lblMemName.Text = Members.CurrentObject.FName & " " & Members.CurrentObject.LName
             lblOrderNum.Text = Orders.CurrentObject.InvoiceID
             cboEmployee.Enabled = False
             cboMembers.Enabled = False
@@ -167,11 +172,13 @@ Public Class frmShopping
         lsvLines.Columns.Add("Description")
         lsvLines.Columns.Add("Qty")
         lsvLines.Columns.Add("Total")
+        lsvLines.Columns.Add("T")
         Dim intWidth As Integer
         intWidth = lsvLines.Columns(0).Width +
                   lsvLines.Columns(2).Width +
-                  lsvLines.Columns(3).Width
+                  lsvLines.Columns(3).Width + 25
         lsvLines.Columns(1).Width = lsvLines.Width - intWidth
+        lsvLines.Columns(4).Width = 25
     End Sub
 
     Private Sub addItemToOrder()
@@ -189,6 +196,11 @@ Public Class frmShopping
             line.SubItems.Add(.ProductDescription)
             line.SubItems.Add(qty)
             line.SubItems.Add(FormatCurrency(qty * .RetailPrice))
+            If (.isTaxable) Then
+                line.SubItems.Add("T")
+            Else
+                line.SubItems.Add("")
+            End If
         End With
         lsvLines.Items.Add(line)
         calcTotals()
@@ -223,6 +235,10 @@ Public Class frmShopping
     End Sub
 
     Private Sub btnCancelOrder_Click(sender As Object, e As EventArgs) Handles btnCancelOrder.Click
+        ClearOrder()
+    End Sub
+
+    Private Sub ClearOrder()
         lblMemName.Text = ""
         lblOrderNum.Text = ""
         lsvLines.Items.Clear()
@@ -230,20 +246,54 @@ Public Class frmShopping
         cboEmployee.Enabled = True
         cboMembers.Enabled = True
         blnOrderStarted = False
+        Orders.Clear()
+        Members.Clear()
+        Employees.Clear()
     End Sub
 
     Private Sub calcTotals()
         Dim sngTotal As Single = 0
+        Dim sngTaxable As Single = 0
 
         For Each lstRow As ListViewItem In lsvLines.Items
-            sngTotal += CSng(lstRow.SubItems(3).Text)
+            Dim value As Single = CSng(lstRow.SubItems(3).Text)
+            sngTotal += value
+            If Not lstRow.SubItems(4).Text = "" Then
+                sngTaxable += value
+            End If
         Next
 
 
 
         lblSub.Text = FormatCurrency(sngTotal)
-        lblTax.Text = FormatCurrency(sngTotal * sTax)
+        lblTax.Text = FormatCurrency(sngTaxable * sTax)
         lblTotal.Text = FormatCurrency(sngTotal + (sngTotal * sTax))
     End Sub
 
+    Private Sub SaveOrder()
+        With Orders.CurrentObject
+            .MbrID = Members.CurrentObject.MbrID
+            .EmpID = Employees.CurrentObject.EmpID
+            .InvTotal = CSng(lblTotal.Text)
+            .ProdTotal = CSng(lblSub.Text)
+            .TaxTotal = CSng(lblTax.Text)
+            .InvoiceDate = New Date(Now.Year, Now.Month, Now.Day)
+            For Each line As ListViewItem In lsvLines.Items
+                Dim item As COrdItem = Orders.NewItem
+                item.ProdId = line.SubItems(0).Text
+                item.Qty = CInt(line.SubItems(2).Text)
+                item.Price = CSng(line.SubItems(3).Text)
+                Orders.AddItemToOrder(item)
+            Next
+        End With
+        Orders.Save()
+        Orders.AddItems()
+        InvoiceForm = New frmInvoice(Orders.CurrentObject.InvoiceID)
+        InvoiceForm.ShowDialog()
+        ClearOrder()
+    End Sub
+
+    Private Sub btnConfirmOrder_Click(sender As Object, e As EventArgs) Handles btnConfirmOrder.Click
+        SaveOrder()
+    End Sub
 End Class

@@ -16,6 +16,14 @@ Public Class COrders
         End Get
     End Property
 
+    Public ReadOnly Property NewItem() As COrdItem
+        Get
+            Dim item As New COrdItem
+            item.InvId = _Order.InvoiceID
+            Return item
+        End Get
+    End Property
+
     Public Function IsValidInvoiceDate(dtmDate As Date) As Boolean
         'ensure that the date is today or earlier, and not a future date
         If dtmDate <= Today Then 'this is not a future date
@@ -38,6 +46,26 @@ Public Class COrders
 
     Public Function Save() As Integer
         Return _Order.Save()
+    End Function
+
+    Public Function AddItems() As Integer
+        Dim result As Integer
+        For Each item As COrdItem In _Order.Items
+            result = item.AddLineItem()
+            If result < 0 Then 'Error occurred
+                Exit For
+            End If
+        Next
+        Return result
+    End Function
+
+    Public Function AddItemToOrder(item As COrdItem) As Integer
+        Return _Order.Items.Add(item)
+    End Function
+
+    Public Function GetOrderItems(strID As String) As SqlDataReader
+        Dim aParam As New SqlParameter("ID", strID)
+        Return myDB.GetDataReaderBySP("dbo.sp_GetInvoiceItemListByInvoiceID", aParam)
     End Function
 
     Public Function GetOrderList() As SqlDataReader

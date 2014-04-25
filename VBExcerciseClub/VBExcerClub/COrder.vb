@@ -14,6 +14,7 @@
     Public Sub New()
         _mstrInvoiceID = ""
         _mdtmInvoiceDate = New Date(Now.Year, Now.Month, Now.Day)
+        _marrItems = New ArrayList
     End Sub
 
     Public Sub NewInvoiceID()
@@ -23,7 +24,11 @@
         If String.IsNullOrEmpty(strLastInvoice) Or strLastInvoice = "-1" Then
             strInvoiceID = "I0001"
         Else
-            strInvoiceID = "I" + ((CType((Right(strLastInvoice, 4)), Integer)) + 1)
+            strInvoiceID = ((CType((Right(strLastInvoice, 4)), Integer)) + 1)
+            While strInvoiceID.Length < 4
+                strInvoiceID = "0" & strInvoiceID
+            End While
+            strInvoiceID = "I" & strInvoiceID
         End If
         _mstrInvoiceID = strInvoiceID
 
@@ -92,13 +97,10 @@
         End Set
     End Property
 
-    Public Property MerrItems As ArrayList
+    Public ReadOnly Property Items As ArrayList
         Get
             Return _marrItems
         End Get
-        Set(marrItems As ArrayList)
-            _marrItems = marrItems
-        End Set
     End Property
 
     Public Property hasChanges() As Boolean
@@ -134,14 +136,6 @@
     End Property
 
     Public Function Save() As Integer
-        'return -1 if the ID already exists (and we can't create a new record then
-        If IsNewOrder Then
-            Dim strRes As String = myDB.GetSingleValueFromSP("sp_CheckInvoiceIDExists", New SqlClient.SqlParameter("INVID", _mstrInvoiceID))
-            If Not strRes = 0 Then
-                Return -1 'Not UNIQUE!
-            End If
-        End If
-        'if not a new member or is new and is unique ID then do the save (update or insert)
         Return myDB.ExecSP("sp_SaveOrder", GetSaveParameters())
     End Function
 End Class
