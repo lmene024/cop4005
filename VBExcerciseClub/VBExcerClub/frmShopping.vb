@@ -8,6 +8,7 @@ Public Class frmShopping
     Private Orders As COrders
     Private Products As CProducts
     Private InvoiceForm As frmInvoice
+    Private LoginForm As frmLogin
 
     Public Sub New()
         ' This call is required by the designer.
@@ -18,15 +19,32 @@ Public Class frmShopping
         Employees = New CEmployees
         Orders = New COrders
         Products = New CProducts
+        LoginForm = New frmLogin
     End Sub
 
     Private Sub frmShopping_Shown(sender As Object, e As EventArgs) Handles Me.Shown
+        If userSecurity = 0 Then
+            LoginForm.ShowDialog()
+            If Not Authorized() Then
+                MessageBox.Show("User does not have access to Shopping Area", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                Me.Hide()
+                PerformNextAction()
+                Exit Sub
+            End If
+        End If
+
         LoadMembers()
         LoadProducts("")
-        LoadEmployees()
+        'LoadEmployees()
+        Employees.GetMemberByID(employeeLogged)
         initListViewColumns()
         calcTotals()
     End Sub
+
+    Private Function Authorized()
+        Return userSecurity = SECURITY_MES Or userSecurity = SECURITY_ES Or
+                userSecurity = SECURITY_MS Or userSecurity = SECURITY_S
+    End Function
 
     Private Sub LoadMembers()
         DataReader = Members.GetMemberList()
@@ -37,14 +55,14 @@ Public Class frmShopping
         DataReader.Close()
     End Sub
 
-    Private Sub LoadEmployees()
-        DataReader = Employees.GetEmployeeList()
-        cboEmployee.Items.Clear()
-        While DataReader.Read
-            cboEmployee.Items.Add(DataReader.Item("lname") & ", " & DataReader.Item("fname"))
-        End While
-        DataReader.Close()
-    End Sub
+    'Private Sub LoadEmployees()
+    '    DataReader = Employees.GetEmployeeList()
+    '    cboEmployee.Items.Clear()
+    '    While DataReader.Read
+    '        cboEmployee.Items.Add(DataReader.Item("lname") & ", " & DataReader.Item("fname"))
+    '    End While
+    '    DataReader.Close()
+    'End Sub
 
     Private Sub LoadProducts(ByRef strSearch As String)
         If Not strSearch = Nothing Then
@@ -141,10 +159,6 @@ Public Class frmShopping
     Private Function StartNewOrder() As Boolean
         Dim blnError As Boolean = False
         errP.Clear()
-        If cboEmployee.SelectedIndex < 0 Then
-            blnError = True
-            errP.SetError(cboEmployee, "Please select your Employee Id")
-        End If
         If cboMembers.SelectedIndex < 0 Then
             blnError = True
             errP.SetError(cboMembers, "Please select a member to create an order")
@@ -152,14 +166,11 @@ Public Class frmShopping
 
         If Not blnError Then
             Dim strMember() As String = cboMembers.SelectedItem.ToString.Split(","c)
-            Dim strEmployee() As String = cboEmployee.SelectedItem.ToString.Split(","c)
             Orders.CreateNewOrder()
             blnOrderStarted = True
             Members.GetMemberByName(Trim(strMember(0)), Trim(strMember(1)))
-            Employees.GetEmployeeByName(Trim(strEmployee(0)), Trim(strEmployee(1)))
             lblMemName.Text = Members.CurrentObject.FName & " " & Members.CurrentObject.LName
             lblOrderNum.Text = Orders.CurrentObject.InvoiceID
-            cboEmployee.Enabled = False
             cboMembers.Enabled = False
             calcTotals()
         End If
@@ -248,7 +259,6 @@ Public Class frmShopping
         lblOrderNum.Text = ""
         lsvLines.Items.Clear()
         calcTotals()
-        cboEmployee.Enabled = True
         cboMembers.Enabled = True
         blnOrderStarted = False
         Orders.Clear()

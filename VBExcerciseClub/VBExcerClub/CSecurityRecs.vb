@@ -7,10 +7,8 @@ Public Class CSecurityRecs
     End Sub
 
     Public Function LoginUser(strUser As String, strPW As String) As Boolean
-        Dim paramList As New ArrayList
-        paramList.Add(New SqlParameter("UserID", strUser))
-        paramList.Add(New SqlParameter("Password", strPW))
-        _Security = FillObject(myDB.GetDataReaderBySP("sp_GetSecurityUser", paramList))
+        Dim param = New SqlParameter("UserID", strUser)
+        _Security = FillObject(myDB.GetDataReaderBySP("sp_GetSecurityUser", param))
         If _Security.Password = strPW Then 'user supplied correct pw
 
             'determine security level
